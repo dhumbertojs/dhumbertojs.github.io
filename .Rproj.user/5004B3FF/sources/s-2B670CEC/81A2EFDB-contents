@@ -1,7 +1,7 @@
 name: "distill_blog"
-title: "My Blog"
+title: "Proyecto nuevo para evadir mis responsabilidades"
 description: |
-  My Blog
+  Maratón chafarama de sábado por la noche v2.0
 output_dir: "docs"
 navbar:
   right:

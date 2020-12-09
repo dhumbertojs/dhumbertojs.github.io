@@ -1,0 +1,137 @@
+---
+title: "LAPOP 2018/2019"
+description: |
+  Treemaps del último barometro de las américas.
+author:
+  - name: David H. Jiménez
+date: 05-12-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+Este viernes presentaron el *Estudio de la cultura política de la democracia en México, 2019* del Latin American Public Opinion Projects. Como politólogo, es un estudio bastante interesante gracias a los distintos enfoques por las y los atutores. Además, siempre he querido replicar gráficas y análisis (que suelen publicar en archivos .do de stata).
+
+## Datos
+
+En esta ocasión, vamos a descargar la base de datos de este [link](http://datasets.americasbarometer.org/database/login.php). Hay que darle clic a **Free user** luego en el buscador escriben "mexico" y van al final de la página para descargar el archivo de 2018.
+
+**Mexico 2018/19 Stata**
+Ya de paso, descargamos el cuestionario y el *codebook*
+
+## Presentación
+
+La presenteación la pueden revisar [aquí](https://www.vanderbilt.edu/lapop/mexico/AB2018-19_Mexico_RRR_Presentation_W_09.25.19.pdf).
+
+A partir de esta presentación, voy a replicar las gráficas de la sección **2.3 Participación política**. Esto para ilustrar como utilizar estos datos, otras gráficas más interesantes requieren información del resto de ejercicios en México.
+
+## Manipulación de datos
+
+En esta ocasión utilizaré nuevos paquetes. La función para instalar un paquete es install.packages("nombre-del-paquete"). En este caso install.packages("readstata13") y install.packages("treemap")
+
+```{r setup}
+library(readstata13)
+library(dplyr)
+library(treemap)
+```
+
+Cuando descarguen sus datos, les recomiendo que tengan una carpeta organizada para este propósito. Es mejor tener ordenado todo y poder trabajar de manera más eficaz. Yo personalmente recomiendo trabajar con los directorios (las carpetas donde están sus datos o donde van a exportar sus resultados) estén como un objeto:
+
+```{r Directorios}
+input <- "/Users/dhjs/Documents/projects/LAPOP"
+#Esta es la carpeta de los datos
+
+output <- paste(input, "graficas", sep = "/")
+#Aquí voy a poner las gráficas
+
+#La función paste une "palabras" (string) en un nuevo objeto: en este caso el objeto input y la palabra "graficas. Ambas separadas por una diagonal
+
+output
+```
+
+Si usas windows, deberás copiar esto de la barra de direcciones: 
+
+![](/post/2020-05-06-lapop-2018-2019_files/2020-05-07 (2).png)
+
+Si usan mac, cuando estén en su carpeta con los datos deberán apretar cmd+i, esperar que se despliegue la pestaña de información y copiar lo que viene en la imágen:
+
+![](/post/2020-05-06-lapop-2018-2019_files/Copy-the-folder-path.png)
+
+```{r LAPOP, warning=F}
+list.files(input)
+
+data <- read.dta13(paste(input, "Mexico LAPOP AmericasBarometer 2019 v1.0_W.dta", sep = "/"))
+```
+
+Si exploran los datos con *head(data)* o *summary(data)* verán un montón de etiquetas y preguntas y datos. Por eso es necesario revisar el cuestionario para saber que pregunta usar. 
+
+```{r}
+levels(data$pol1)
+summary(data$pol1)
+```
+
+La gráfica sólo contempla las respuestas mucho, algo, poco y nada. Por lo tanto hay que quitar lo que dice NA.
+Un NA es un valor no existente, es decir que no recolectó o que no existe la información. En ocasiones este tipo de información es importante.
+
+```{r}
+data %>% 
+  filter(!is.na(pol1)) %>% 
+  group_by(pol1) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    porc = round(n/sum(n),3) * 100,
+    lab = paste0(pol1, "\n", porc, "%")
+    ) %>% 
+  treemap(index = "lab", vSize = "porc", type = "index",
+          title = "Interés en la política")
+```
+
+R nos permite utilizar funciones dentro de funciones, un proceso conocido como anidar. En este caso, la función **is.na()** se utiliza para detectar los valores NA. Si a cualquier función le ponemos **!** le estamos diciendo a R que queremos lo contrario a la función. En el caso de un filtro, le estamos diciendo que detecte los NA, pero que se quede con todo lo que **NO** sea NA.
+
+Luego agrupamos por la pregunta que nos interesa *pol1*, contamos el número de casos y desagrupamos. Luego con un mutate (que sirve para crear o modificar variables); En este caso *porc* es una nueva variable para calcular el porcentaje por respuesta anidando funciones: el conteo por pregunta divido entre la suma de todas las respuetas; redondeado a 3 decimales y multiplicada por 100. La variable *lab* va a pegar la pregunta, va a dejar un renglón (*"\n"*), va a pegar el porcentaje y luego el signo de porcentaje (%).
+
+Y en esta ocasión aproveché para hacer todo en un *chunk* de código, el cálculo y la gráfica. Como no me parece útil una gráfica de pastel (porque a veces no puedes ver bien valores muy pequeños); les presento esta alternativa llamada **tremap**. Es como una gráfica de pastel, pero cuadrada. 
+
+```{r}
+data %>% 
+  filter(!is.na(vb1)) %>% 
+  group_by(vb1) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    porc = round(n/sum(n), 3) * 100,
+    lab = paste0(vb1, "\n", porc, "%") 
+  ) %>% 
+  treemap(index = "lab", vSize = "porc", type = "index",
+          title = "Registrada para votar")
+```
+
+```{r}
+data %>% 
+  filter(!is.na(vb10)) %>% 
+  group_by(vb10) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    porc = round(n/sum(n), 3) * 100,
+    lab = paste0(vb10, "\n", porc, "%") 
+  ) %>% 
+  treemap(index = "lab", vSize = "porc", type = "index",
+          title = "Simpatiza con algún partido político")
+```
+
+```{r}
+data %>% 
+  filter(!is.na(vb20)) %>% 
+  group_by(vb20) %>% 
+  count() %>% 
+  ungroup() %>% 
+  mutate(
+    porc = round(n/sum(n), 3) * 100,
+    lab = paste0(vb20, "\n", porc, "%") 
+  ) %>% 
+  treemap(index = "lab", vSize = "porc", type = "index",
+          title = "Intención de voto en las proximas elecciones presidenciales")
+```
+
+Entonces, vemos que tenemos los mismos porcentajes que las gráficas de la presentación. Aprendimos a abrir archivos de Stata y aprendimos un nuevo estilo de gráficas. 

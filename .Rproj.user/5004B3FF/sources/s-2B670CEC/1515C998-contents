@@ -1,0 +1,467 @@
+---
+title: "A 3 aÃ±os del sismo... desde las solicitudes de informaciÃ³n"
+description: |
+  Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S.
+author:
+  - name: David H. Jiménez
+date: 09-24-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+![](/post/2020-09-24-a-3-años-del-sismo-desde-las-solicitudes-de-información_files/Hidden-Attention-Hide-Kitten-Cat-Face-4135066.jpg)
+
+¡Hola! Dejé esto abandonado por algún tiempo, la pandemia me dejo todo revuelto y apenas he retomado muchas de las actividades que mantenían mi cordura. Ahora, quiero escribir sobre algo que hice en el trabajo, y un par de trucos para empezar a usar **purrr::map()** y facilitarse la vida con tareas repetitivas.
+
+Actualmente trabajo en el Instituto de Transparencia, Acceso a la Información Pública, Protección de Datos Personales y Rendición de Cuentas de la Ciudad de México (INFO CDMX, pa' los cuates). Aquí, hay un área que se dedica a procesar datos estadísticos de las solicitudes, y a principios de este mes (septiembre) se realizó el [*2° Coloquio Internacional por una reconstrucción abierta en la CDMX*](https://infocdmx.org.mx/reconstruccionabiertaCDMX/programa/) en donde se abrieron datos sobre solicitudes referentes al sismo del 19 de septiembre de 2017.
+
+Entonces, vamos a utilizar las bases de datos disponibles. Van a la sección de [multimedia](https://infocdmx.org.mx/reconstruccionabiertaCDMX/multimedia/) y van a descargar el archivo zip que dice repositorio y lo van a descomprimir. Como es un archivo zip, no deberían tener ningún problema, si no pueden descargar [winrar](https://www.winrar.es/descargas/103/descargar-winrar-para-windows-x64-en-espanol) (esto no es un comercial, pero me parece el más útil).
+
+![](/post/2020-09-24-a-3-años-del-sismo-desde-las-solicitudes-de-información_files/2020-09-24.png)
+
+En el archivo van a encontrar: 
+
+1. Un archivo con todas las solicitudes.
+2. Tres archivos con las solicitudes por año, es decir un archivo con todas las solicitudes de 2017, 2018 y 2019.
+3. Tres carpetas con los archivos individuales por año. En este caso, cada carpeta tiene los archivos de las dependencias e instituciones que recibieron solicitudes. Por ejemplo, *Delegación Benito Juárez-2017.xlsx*.
+
+El origen de estos datos es de las solicitudes de información realizadas durante el periodo registrado, así como la integración de la información por los sujetos obligados (nombre para las instituciones que reciben y ejercen recursos públicos de manera sistemática, desde secretarías hasta sindicatos). Entonces, además de poder observar los textos de las solicitudes, podemos acceder a algunos datos sociodemográficos. Y ahora sí, con el código :D
+
+## Libraries o paquetes
+
+```{r results='hide'}
+library(dplyr)
+library(readxl)
+library(purrr)
+library(ggplot2)
+library(scales)
+library(lubridate)
+library(stringr)
+```
+
+Como siempre, lo primero es "llamar" los paquetes. Y luego, definir los "directorios", es decir las carpetas donde tenemos los archivos que vamos a trabajar. Por eso es muy importante que tengan orden en sus carpetas, sino puede ser muy complicado trabajar.
+
+Intenté hacerlo con *setwd()*, que es la manera base, pero la verdad era demasiado escribir y copiar. Si quieren intentarlo tendrían que poner algo así: **setwd("/Users/equipo/carpeta/Bases de SIP sobre reconstrucción en la CDMX")**.
+
+Pero yo, como siempre, haré que mis directorios sean objetos de r:
+
+```{r}
+input <- "/Users/dhjs/Documents/projects/data_blog/Bases de SIP sobre reconstrucción en la CDMX"
+list.files(input)
+```
+
+Puse un punto **"."** porque para publicar esto r siempre me pone un directorio *default*, entonces el punto signfica lo mismo que copiar este directorio. Y quiero que exploremos esta manera de utilizar directorios.
+
+Ahora, podemos hacer varias cosas: dado que en la carpeta que descomprimimos viene un único archivo con todas las solicitudes de información, obviamente sería más fácil trabajar así. Pero, no aprenderíamos a trabajar con múltiples archivos al mismo tiempo. 
+
+Entonces, vamos a utilizar las carpetas con los archivos individuales. De este modo, podríamos "leer" cada archivo de manera individual de la siguiente manera: 
+
+```{r}
+archivo1 <- read_excel(path = paste0(input, "/2017/Delegación Álvaro Obregón-2017.xlsx"))
+list.files(paste(input, "2017", sep = "/"))
+```
+
+Lo primero que podemos notar es que son 23 archivos para el año 2017... Entonces, cargar cada archivo, sabiendo que tienen la misma estructura, es poco eficiente, especialmente si pensamos que todavía nos faltan los datos de 2018 y 2019. 
+
+```{r}
+list.files(paste(input, "2018", sep = "/"))
+```
+
+```{r}
+list.files(paste(input, "2019", sep = "/"))
+```
+
+Parece intimidante, ¿no? Leer 74 archivos para empezar a trabajar... Pero para eso tenemos **purrr**.
+
+## purrr::map()
+
+![](/post/2020-09-24-a-3-años-del-sismo-desde-las-solicitudes-de-información_files/featured.jpg)
+
+Este paquete nos permite realizar tareas de *Functional programming* una palabra elegante para decir realizar tareas repetitivas de manera más rápida y eficiente. Pueden consultar la documentación [aquí](https://purrr.tidyverse.org/).
+
+```{r}
+primer <- list.files(paste(input, "2017", sep = "/"))
+
+primer_e <- map(primer, 
+                ~ read_excel(path = paste(input, "2017", .x, sep = "/")))
+#View(primer_e)
+```
+
+Con este código ya abrimos los 23 archivos de excel :D 
+
+Pero, aún no podemos usarlos como base de datos :( 
+
+Esto se debe a que **map** es una función especial de purrr. Ya vimos lo que hace, pero no sabemos porque. 
+
+**map** nos permite aplicar una función a todos los elementos de una lista o vector que nosotros le proporcionemos. En este caso, utilicé *list.files* para crear un objeto llamado *primer*. 
+
+Luego, le decimos que función queremos que aplique. Como queremos que lea exceles, le ponemos *read_excel*. Y aquí vamos a repasar todo. Esta función tiene un montón de parámetros para leer exceles. Pero por ahora nos importa uno: donde está el archivo **path = **. Aquí utilicé una función *paste* que sirve para pegar *strings* lo que nos permite abrir los archivos de excel.
+
+* input, como mencioné es la carpeta con todos los datos descomprimidos.
+* 2017 es la carpeta del año con los archivos individuales
+* **.x** es un argumento de la función *map* es el i-esímo objeto al que le aplicaremos la función. Como espero hayas notado, primer es el objeto con la lista de archivos excel dentro de la carpeta, por eso necesito el *paste* para que vaya cambiando. 
+En otras palabras, el .x es la variable que ira cambiando hasta que termine de leer los archivos. 
+
+Ahora lo que queremos es poder utilizar los datos como siempre, en un *data frame*.
+
+```{r}
+primer_f <- bind_rows(primer_e)
+
+dim(primer_f)
+```
+
+Como sabemos que todo tiene la misma estructura podemos combinar los archivos por renglones. Estamos pegando un archivo debajo de otro, debajo de otro y así, siempre y cuando tengan los mismos encabezados. Esto último es fundamental porque **bind_rows** es un función de *dplyr* y si no tienen los mismo encabezados y dimensiones no podríamos hacerlo. No es como su "primo" **cbind** de r base, que solo necesita que tenga el mismo número de columnas y lo une como esté. A veces la utilizaremos, pero necesitamos estar seguras de cómo y cuándo.
+
+SOlo falta hacer lo mismo para los otros años:
+
+```{r}
+segundo <- list.files(paste(input, "2018", sep = "/"))
+
+segundo_e <- map(segundo, 
+                ~ read_excel(path = paste(input, "2018", .x, sep = "/")))
+
+segundo_f <- bind_rows(segundo_e)
+
+dim(segundo_f)
+
+tercer <- list.files(paste(input, "2019", sep = "/"))
+
+tercer_e <- map(tercer, 
+                ~ read_excel(path = paste(input, "2019", .x, sep = "/")))
+
+tercer_f <- bind_rows(tercer_e)
+
+dim(tercer_f)
+```
+
+En el caso de 2018, les va a salir un error, y es que el nombre del primer archivo es estupidamente largo: "Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2018.lsx" por eso hay que cambiarlo a mano en nuestra carpeta. A **map** no le importa los nombres de los arhivos, pero sí la longitud de los *strings*. Si creen que el nombre es demasiado largo, tal vez tengan razón. Porque lo mismo pasa para el 2019: "Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2019.xlsx"
+
+Y todas tienen 40 columnas :D Entonces, el siguiente paso es más fácil. Ahora tenemos 3 archivos, uno correspondiente a cada año. Pero, generalmente, es más fácil tener todo dentro de una sola base de datos.
+
+```{r}
+data <- bind_rows(primer_f, segundo_f, tercer_f)
+
+dim(data)
+```
+
+![](/post/2020-09-24-a-3-años-del-sismo-desde-las-solicitudes-de-información_files/descarga.jfif)
+
+## Gráficas
+
+Ahora tenemos una base de datos con 6,819 renglones y 40 columnas. Y con esto podemos ponernos a hacer algunas gráficas. 
+
+Pero, hay un pequeño, pequeñísimo problema... Los nombres de las columnas.
+
+```{r}
+names(data)
+```
+
+Aquí, sí se ven las diagonales inversas, si lo abren en excel verán que está en varios renglones, pero esto es muy difícil de trabajar en r. Para solucionar esto, vamos a cambiarle los nombres a todas las variables.
+
+```{r}
+nombres <- c(
+  "No.", 
+  "Sujeto_N", 
+  "Sujeto", 
+  "Organo_N", 
+  "clave",
+  
+  "propio",
+  "Folio", 
+  "fecha_presentacion", 
+  "Medio_presento", 
+  "Informacion_objeto", 
+  
+  "Preguntas_solicitud", 
+  "Tematica_solicitud", 
+  "Area_interes", 
+  "info_de_oficio", 
+  "Estado_info", 
+  
+  "prevencion_solicitante", 
+  "fecha_prevencion", 
+  "solicitud_prevenida", 
+  "preguntas_prevenidas", 
+  "notificar_ampliacion", 
+  
+  "modalidad_respuesta", 
+  "total_entes_turnados", 
+  "ente_turnado", 
+  "info_entregada", 
+  "costo_reproduccion", 
+  
+  "monto_reproduccion", 
+  "medio_disposicion_info", 
+  "fecha_notificacion", 
+  "medio_notificacion", 
+  "dias_transcurridos_recepcion_notificacion",
+  
+  "Servidores_publicos_involucrados", 
+  "sexo", 
+  "edad", 
+  "ocupacion", 
+  "escolaridad", 
+  
+  "entidad_federativa", 
+  "observaciones",
+  "mes", 
+  "year",
+  "clasificacion"
+)
+
+names(data) <- nombres
+```
+
+Puse cada nombre en un reglón y un espacio cada 5 nombres, para no perderme, si se saben otra manera avísenme :P
+
+Además de cambiarle el nombre, vamos a utilizar la forma en que se procesan los datos: cambiar categorías, agrupar, crear nuevas variables, etc. Esto lo voy a hacer porque estoy familiarizado con este procesamiento. Creo que el código es autoexplicativo, pero si tienen alguna duda mandenme un DM en [twitter](https://twitter.com/dhumbertoj).
+
+```{r}
+data <- data %>% 
+  mutate(semana = week(fecha_presentacion)) %>% 
+  group_by(year, Sujeto_N, semana) %>% 
+  distinct(Informacion_objeto, .keep_all = T) %>% 
+  ungroup() %>% 
+  mutate(
+    clasificacion = str_replace_all(clasificacion,
+                                    c("daños" = "Daños", "evaluacion" = "Evaluación", 
+                                      "fondos" = "Fondos", "legalidad" = "Legalidad",
+                                      "prevencion" = "Prevención", "reconstruccion" = "Reconstrucción", 
+                                      "respuesta al sismo" = "Respuesta al sismo")),
+    
+    Tematica_solicitud = ifelse(str_detect(Tematica_solicitud, "Otros") == T, 
+                                "Otros", 
+                                ifelse(Tematica_solicitud == "Datos Personales", 
+                                       "Otros", Tematica_solicitud)),
+    
+    modalidad_respuesta_2 = ifelse(str_detect(modalidad_respuesta, "Aceptada") == T, 
+                                   "Aceptada", 
+                                   ifelse(str_detect(modalidad_respuesta, "restringido") == T, 
+                                          "Acceso restringido", modalidad_respuesta)),
+    edad = as.numeric(edad),
+    
+    grupo_edad = ifelse(edad <= 19, "Hasta 19 años",
+                        ifelse(edad > 19 & edad < 30, "De 20 a 29 años",
+                               ifelse(edad >= 30 & edad < 40, "De 30 a 39 años",
+                                      ifelse(edad >= 40 & edad < 50, "De 40 a 49 años",
+                                             ifelse(edad >= 50 & edad < 60, "De 50 a 59 años",
+                                                    ifelse(edad >= 60 & edad < 70, "De 60 a 69 años", 
+                                                           ifelse(edad >= 70, "70 o mas años", edad))))))),
+    
+    grupo_edad = factor(grupo_edad, levels = c("Hasta 19 años","De 20 a 29 años","De 30 a 39 años",
+                                               "De 40 a 49 años", "De 50 a 59 años", "De 60 a 69 años", 
+                                               "70 o mas años")),
+    
+    escolaridad = str_replace_all(escolaridad, c("Bachillerato o carrera técnica" = "Bachillerato",
+                                                 "Bachillerato" = "Bachillerato o carrera técnica",
+                                                 "Maestría o Doctorado" = "Maestría o doctorado")),
+    
+    ocupacion = str_replace_all(ocupacion, c("Otros - Amas de Casa" = "Hogar",
+                                             "Otros - Organizaciones No Gubernamentales Internacionales" = "ONG",
+                                             "Otros - Organizaciones No Gubernamentales Nacionales" = "ONG",
+                                             "Otros - Asociación política" = "Asociación política",
+                                             "Servidor Público" = "Servicio público",
+                                             "Otros - Comerciante" = "Comercio",
+                                             "Otros - Empleado u obrero" = "Empleada/o u obrera/o",
+                                             "Empleado u obrero" = "Empleada/o u obrera/o")),
+    
+    ocupacion = ifelse(str_detect(ocupacion, "Académico") == T, "Académico o estudiante",
+                       ifelse(str_detect(ocupacion, "Empresarial")== T, "Empresa",
+                              ifelse(str_detect(ocupacion, "Gubernamental") == T, "Servicio público",
+                                     ifelse(str_detect(ocupacion, "omunicación") == T, "Medios de comunicación", 
+                                            ifelse(str_detect(ocupacion, "Otro") == T, "Otro", ocupacion))))),
+    
+    Organo_N = str_replace_all(Organo_N, c(
+      "1" = "Administración Pública Central",
+      "2" = "Desconcentrados y Paraestales",
+      "3" = "Alcaldías",
+      "4" = "Judicial",
+      "5" = "Legislativo",
+      "6" = "Autónomo", 
+      "7" = "Partidos Políticos",
+      "8" = "Sindicatos"
+    )),
+    
+    Preguntas_solicitud = as.numeric(Preguntas_solicitud),
+    
+    preguntas_prevenidas = as.numeric(preguntas_prevenidas),
+    
+    total_entes_turnados = as.numeric(total_entes_turnados),
+    
+    info_entregada_2 = ifelse(str_detect(info_entregada, "No"), "No",
+                              ifelse(str_detect(info_entregada, "Si"), 
+                                     "S?", info_entregada)),
+    
+    dias_transcurridos_recepcion_notificacion = 
+      as.numeric(dias_transcurridos_recepcion_notificacion),
+    
+    Servidores_publicos_involucrados = as.numeric(Servidores_publicos_involucrados),
+    
+    sexo = str_replace_all(sexo, c("Femenino" = "Mujeres", "Masculino" = "Hombres"))
+  )
+dim(data)
+```
+
+Lo que me gustaría enfatizar son las primeras 5 líneas de código. Yo revise esta base de datos y sé que hay muchas solicitudes repetidas. Pero, no puedo descartarlas solo por el hecho de estar repetidas. Quizás una persona estuvo realizando la misma solicitud sistemáticamente cada semana, o quizás a una persona se le fue el internet al terminar y realizó exactamente la misma solicitud. Por esa razón, y siguiendo los criterios del [Natalia Torres y Guillermo Cejudo](http://www.revistas.unam.mx/index.php/encrucijada/article/view/71485) para que solo se quede una solicitud con el mismo texto a la semana. Es decir, si es idéntico el texto de dos solicitudes con folio diferentes, y se presentó en la misma semana, solo se contará la más antigua.
+
+```{r}
+colores <- c("Daños" = "#ae3a3d", "Evaluación" = "#fc8d33", 
+             "Fondos" = "#faef59", "Legalidad" = "#bcfa3d", 
+             "Prevención" = "#4fc6c4", "Reconstrucción" = "#FF0066", 
+             "Respuesta al sismo" = "#6600cc")
+```
+
+Códigos de colores para que todas las gráficas estén uniformes.
+
+```{r}
+data %>% 
+  group_by(year) %>% 
+  mutate(tyear = n()) %>% 
+  group_by(year, clasificacion, tyear) %>% 
+  summarise(tclas = n()) %>% 
+  ungroup() %>% 
+  mutate(porc = tclas/tyear) %>% 
+  ggplot(aes(x = year, y = porc, fill = clasificacion)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_y_continuous(labels = percent_format()) +
+  scale_fill_manual(values = colores) +
+  theme(legend.position = "bottom") +
+  theme_classic() +
+  labs(title = "Solicitudes por tema",
+       subtitle = "Dividido por año",
+       x = "", y = "", fill = "Clasificación", 
+       caption = "Incluye personas que no proporcionaron información sociodemográfica.\nTotal de observaciones = 5,168")
+```
+
+Ahora, aquí vemos que las solicitudes se concentran en un par de clasificaciones y R lo ajusta al tamaño de la pantalla. Pero acabo de leer un librito que les recomiendo mucho *How charts lie: Getting Smarter about Visual Information* sobre como entender mejor las gráficas y diseñarlas. En este sentido, quiero ver como se ve cuando el límite es 100%
+
+```{r}
+data %>% 
+  group_by(year) %>% 
+  mutate(tyear = n()) %>% 
+  group_by(year, clasificacion, tyear) %>% 
+  summarise(tclas = n()) %>% 
+  ungroup() %>% 
+  mutate(porc = tclas/tyear) %>% 
+  ggplot(aes(x = year, y = porc, fill = clasificacion)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  ylim(0,1) +
+  scale_fill_manual(values = colores) +
+  theme(legend.position = "bottom") +
+  theme_classic() +
+  labs(title = "Solicitudes por tema",
+       subtitle = "Dividido por año",
+       x = "", y = "", fill = "Clasificación", 
+       caption = "Incluye personas que no proporcionaron información sociodemográfica.\nTotal de observaciones = 5,168")
+```
+
+Aquí ya no pude poner el eje "y" como me hubiera gustado, pero la idea es muliplicar la leyenda por 100 para convertirlo en porcentaje.
+
+Podemos darnos cuenta que poniendo como límite el 100 pierde todo el impacto la gráfica. Por lo que dejarla acotada hasta el 40% nos da una mejor visión para comparar entre categorías. Jugar con las gráficas siempre nos da perspectiva.
+
+```{r}
+nrow(data %>% 
+  filter(!is.na(sexo)))
+
+summary(data %>% 
+  filter(!is.na(sexo)) %>%
+  select(sexo) %>%
+    mutate(sexo = as.factor(sexo)))
+
+data %>% 
+  filter(!is.na(sexo)) %>% 
+  mutate(cont = 1) %>% 
+  group_by(sexo, year) %>% 
+  mutate(tsex = sum(cont, na.rm = T)) %>% 
+  group_by(sexo, year, clasificacion, tsex) %>% 
+  summarise(tclas = n()) %>% 
+  ungroup() %>% 
+  mutate(porc = tclas/tsex) %>% 
+  ggplot(aes(x = sexo, y = porc, fill = clasificacion)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_fill_manual(values = colores) +
+  scale_y_continuous(labels = percent_format()) +
+  coord_flip() +
+  facet_grid(. ~ year) +
+  theme(legend.position = "bottom") +
+  theme_classic() +
+  labs(title = "Solicitudes por tema y sexo",
+       subtitle = "Dividido por año",
+       x = "", y = "", fill = "Clasificación", 
+       caption = "Solo se consideran solicitudes con información sobre el sexo de la persona solicitante\nTotal de observaciones = 3,715")
+```
+
+Algo que me parece fundamental es que solo el 71.9% de las solicitudes pusieron información sobre el sexo de la persona solicitante. Y de estas solicitudes, el 70.98% fueron realizadas por personas que se identifican como hombres.
+
+Por último, vamos a ver el comportamiento de las solicitudes por mes de los años en cuestión.
+
+```{r}
+data %>% 
+  mutate(
+    mes = month(fecha_presentacion)
+    ) %>% 
+  group_by(year, mes, clasificacion) %>% 
+  summarise(total = n()) %>% 
+  filter(year == 2017) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = as.factor(mes), y = total, group = clasificacion)) +
+  geom_point(aes(color = clasificacion)) +
+  geom_line(aes(color = clasificacion)) +
+  scale_color_manual(name = "Clasificación",
+                     values = colores) +
+  scale_x_discrete(labels= c("Septiembre", "Octubre", "Noviembre", "Diciembre")) +
+  labs(title = "Total de solicitudes por mes",
+       subtitle = "2017",
+       x = "", y = "") +
+  theme_classic() +
+  theme(legend.position = "bottom") 
+```
+
+De esta gráfica lo más interesante es que en septiembre casi no hay solicitudes registradas, lo cual es bastante obvio porque estabaos en medio de una emergencia. Además, en todas estas gráficas utilizo números absolutos. El mes con más registros es octubre de 2017. En los años siguientes el pico nunca es tan alto.
+
+```{r}
+data %>% 
+  mutate(
+    mes = month(fecha_presentacion)) %>% 
+  group_by(year, mes, clasificacion) %>% 
+  summarise(total = n()) %>% 
+  filter(year == 2018) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = as.factor(mes), y = total, group = clasificacion)) +
+  geom_point(aes(color = clasificacion)) +
+  geom_line(aes(color = clasificacion)) +
+  scale_color_manual(name = "Clasificación",
+                     values = colores) +
+  scale_x_discrete(labels= c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")) +
+  labs(title = "Total de solicitudes por mes",
+       subtitle = "2018",
+       x = "", y = "") +
+  theme_classic() +
+  theme(legend.position = "bottom") 
+```
+
+```{r}
+data %>% 
+  mutate(
+    mes = month(fecha_presentacion)) %>% 
+  group_by(year, mes, clasificacion) %>% 
+  summarise(total = n()) %>% 
+  filter(year == 2019) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = as.factor(mes), y = total, group = clasificacion)) +
+  geom_point(aes(color = clasificacion)) +
+  geom_line(aes(color = clasificacion)) +
+  scale_color_manual(name = "Clasificación",
+                     values = colores) +
+  scale_x_discrete(labels= c("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", 
+                             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")) +
+  labs(title = "Total de solicitudes por mes",
+       subtitle = "2019",
+       x = "", y = "") +
+  theme_classic() +
+  theme(legend.position = "bottom") 
+```
+
+Con estas graficas podemos empezar a plantear preguntas más interesantes. Además, es un esfuerzo institucional. Al igual que todos los datos, necesitamos más contexto para poder realizar preguntas más interesantes. Hay más categorías en estas bases de datos, como ocupación, días hábiles en los que se dió respuesta, número de servidores públicos involucrados, etc. En lo que aprendo mejor *text mining* una primera aproximación es ver estas gráficas.
