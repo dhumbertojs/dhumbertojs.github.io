@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": true
+            "ascending": false
         }
     ],
-    "path": "~/projects/distill_blog/_posts/2020-12-09-ile-en-cdmx"
+    "path": "~/projects/distill_blog/docs/posts"
 }
