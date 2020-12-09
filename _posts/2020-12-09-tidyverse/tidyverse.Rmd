@@ -1,0 +1,124 @@
+---
+title: "Tidyverse"
+description: |
+  Breve introducción al conjunto de libraries más interesante de R.
+author:
+  - name: David H. Jiménez
+    url: https://twitter.com/dhumbertoj
+date: 18-04-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+# Tidyverse o por qué dar tanto brinco estando el suelo tan parejo?
+
+## Pequeña intro
+R es un lenguaje de programación pensado para profesionales de las matemáticas y de la estadística. En este sentido, es un software con mucha historia (desde los 70's aproximadamente). Por esta razón se ha tenido que actualizar y mejorar. Esto se ha debido, principalmente, a la gran comunidad de usuarios y a que es un software gratuito y de código abierto. Esto quiere decir que todas lo pueden modificar y adaptar de acuerdo a sus necesidades.
+
+Por esta razón, se han creado herramientas para el análisis de de datos: [Tidyverse](https://www.tidyverse.org/)
+
+R tiene una sintaxis base (a partir de ahora, R base). Sin embargo, como cualquier otro lenguaje, las palabras, cosas y significados cambian a lo largo del tiempo. Tidyverse nos permite realizar distintas operaciones sobre bases de datos (además de que me parece más amigable que R base).
+
+A estar herramientas adicionales se les llama paquetes (*packages*) y deben ser instaladas. Una vez instaladas, solo deben "activarse" cada vez que serán utilizadas (*library*). La siguiente imagen explica mejor la idea:
+
+![](/post/2020-04-18-tidyverse_files/71474189-f30f-427d-ac69-52b1b42ffe1c.jpeg)
+
+En este caso, tidyverse es un conjunto de paquetes: 
+2. Ggplot (visualización/gráficas)
+2. Dplyr (manipulación de bases de datos)
+3. Tidyr (arreglo/acomodar bases de datos)
+4. Readr (importar "leer" archivos)
+5. Tibble (creación de bases de datos, *data frames*)
+6. Stringr (funciones para textos, *strings*)
+7. Forcats (funciones para factores)
+
+Bueno, esto ya fue mucho choro. Vamos a jugar un rato. Para ejecutar el código abajo debes tener instalado [R](https://cran.r-project.org/mirrors.html), [R studio](https://rstudio.com/products/rstudio/download/), así como tidyverse install.packages("tidyverse") en tu script. 
+
+## Dplyr y Ggplot
+
+En este caso, vamos a utilizar las bases de datos que vienen por default en ggplot. Por lo que no tendrás que descargar nada (por ahora). Una forma de presentar nuestros resultados es a través de tablas y gráficas. Empezaremos con cosas sencillas, hasta hacerlas complejas y bonitas.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+```
+
+Como regla general, suelo poner las *libraries* al principio del script.
+
+```{r}
+datos <- diamonds
+
+dim(datos)
+```
+
+"datos" es el nombre que le puse a la base de datos (si lo nombramos existe :D). 
+"diamonds" es la base de datos dentro del paquete ggplot2. Contiene información de precios, calidad y kilates de 53,940 diamantes, en 10 columnas. ¿Qué cómo sé eso? por la función dim: número de renglones y número de columnas.
+
+```{r}
+summary(datos)
+
+datos <- datos %>% 
+  select(-c(x, y, z)) %>% 
+  filter(price >= 1000)
+```
+"summary" nos da un resumen de como estan distribuidas las variables
+%>% es un operador que funciona con dplyr y nos permite realizar operaciones secuenciales.
+Select nos permite mantener o eliminar columnas de una base de datos. La parte c() es para indicar que todo es parte de lo que se va elminar.
+Filter es eso, un filtro :P
+
+```{r}
+ggplot(datos, aes(x = cut)) +
+  geom_bar()
+```
+
+Una gráfica de barras es, originalmente, una gráfica de una sola variable.
+Igual que en dplyr, ggplot realiza operaciones secuenciales: primero necesita la base de datos a graficar (datos), luego en aes (aesthetics) van las variables principales a gráficar. Alias "eje x" y "eje y".
+
+Como está muy sencilla, vamos a complicarla un poco.
+
+```{r}
+ggplot(datos, aes(x = cut, fill = color)) +
+  geom_bar()
+```
+
+fill nos permite incluir variables categóricas dentro de las barras.
+
+```{r}
+ggplot(datos, aes(x = cut, fill = color)) +
+  geom_bar(position = "dodge")
+```
+
+Como ya separamos cada barra en categorías, separarlas a lo largo del eje puede ser una buena opción.
+
+```{r}
+ggplot(datos, aes(x = cut, fill = color)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Mi primera gráfica",
+       subtitle = "Datos de diamantes",
+       y = "", x = "corte", 
+       caption = "Fuente: creeme we",
+       fill = "Colores")
+```
+
+La función labs es muy útil para modificar las gráficas y es bastante intuitiva. En este caso, todo lo que está en comillas son textos (*strings*)
+
+```{r}
+ggplot(datos, aes(x = cut, fill = color)) +
+  geom_bar(position = "dodge") +
+  labs(title = "Mi primera gráfica",
+       subtitle = "Datos de diamantes",
+       y = "", x = "corte", 
+       caption = "Fuente: creeme we",
+       fill = "Colores") +
+  coord_flip() + 
+  theme_classic()
+```
+
+La función coord flip nos permite girar a la izquierda nuestra gráfica, mientras que la función theme_classic() cambia como se ve la gráfica final. 
+
+Esto es lo más básico que necesitas para que una gráfica se vea aceptable.
+
+Si tienen dudas o sugerencias, no duden en enviarme un tuit. 
+
+Nos vemos la próxima semana.
