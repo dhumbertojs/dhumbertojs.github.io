@@ -4,7 +4,7 @@ description: |
   Primer análisis de datos sobre Interrupción Legal del Embarazo en la CDMX.
 author:
   - name: David H. Jiménez
-date: 30-04-2020
+date: 04-30-2020
 output:
   distill::distill_article:
     self_contained: false
@@ -20,7 +20,7 @@ El 24 de abril, es decir el viernes de la semana pasada, en la Ciudad de México
 
 Por eso, vamos a revisar la base de datos actualizada hasta el 24 de abril pasado. La base más actualizada la pueden encontrar en el sitio de la [ADIP](https://datos.cdmx.gob.mx/explore/dataset/interrupcion-legal-del-embarazo/table/). Sin embargo, por facilidad y para replicar los mismos resultados, los datos con los que trabajaré están alojados en mi cuenta de google drive. Vamos a hacer algunas tablas y gráficas.
 
-```{r, results = 'asis'}
+```{r echo=T, results = 'asis'}
 origen <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ-27iXWPJK4vgK1EzzvIRL2vgNt296XyMFNMAZFkWqHBCUdLKtu4u4Da5WPLuH7AG0NNYFjija2g92/pub?gid=138072597&single=true&output=csv"
 
 
@@ -40,7 +40,7 @@ Si quieren saber que significan las variables, pueden descargar el [diccionario 
 
 Ahora, los paquetes. Usualmente, los paquetes van al principio del código y van juntos.
 
-```{r}
+```{r echo=T}
 library(janitor)
 library(dplyr)
 library(ggplot2)
@@ -48,25 +48,25 @@ library(ggplot2)
 
 Vamos a hacer tablas con el conteo por las variables. Como es un ejemplo, trataré de hacer cosas basicas. Esto se hace con el paquete [janitor](https://garthtarr.github.io/meatR/janitor.html). Además de hacer tablas, el paquete **Janitor** "limpia" las bases de datos. En este caso, vamos a cambiar los nombres de las variables: la variable Año suele tener
 
-```{r}
+```{r echo=T}
 datos <- clean_names(datos)
 
 names(datos)
 ```
 
-```{r}
+```{r echo=T}
 tabyl(datos, ano)
 ```
 
 Esta primera tabla muestra el número de procedimientos por año y el porcentaje del total.
 
-```{r}
+```{r echo=T}
 tabyl(datos, ano, mes)
 ```
 
 En este caso, la tabla no sale tan chida. Por esa razón vamos a hacerla con dplyr.
 
-```{r}
+```{r echo=T}
 tabla <- datos %>% 
   mutate(cont = 1) %>% 
   group_by(ano, mes) %>% 
@@ -79,13 +79,11 @@ Esta tabla se hizo con **Dplyr**. Este paquete nos permite manipular bases de da
 
 En este caso, a la base "datos" le aplicaremos distintas operaciones gracias al operador pipe (**%>%**). Es decir a la base de datos le haremos un mutate(crear una nueva variable) luego ( %>% ) agrupamos las variables año y mes; para finalizar ( %>% ) le hacemos un summarise (colpasamos la base de datos) en ese caso sumaremos la variable cont (que es ponerle un 1 a cada renglón) por año y mes.
 
-![](/post/2020-04-30-ile-en-cdmx_files/pipe.png)
-
 Como ya habrán notado, los meses están desordenados.
 
 ## Gráficas
 
-```{r}
+```{r echo=T}
 graf <- datos %>% 
   mutate(cont = 1) %>% 
   group_by(ano, mes) %>% 
@@ -106,7 +104,7 @@ graf <- datos %>%
 
 Este código calcula el porcentaje por mes y año. Además, ordena los meses y el año como factores.
 
-```{r}
+```{r echo=T}
 ggplot(graf, aes(x = mes, y = porc, group = ano)) +
   geom_line(aes(color = ano)) +
   scale_y_continuous(labels = scales::percent_format())
@@ -116,7 +114,7 @@ Esta gráfica muestra el porcentaje por mes y por año. Como podrán notar, 2019
 
 En el caso de scales:: , esta es una forma de utilizar una función de un paquete sin tener que poner **library**. ¿Qué por qué necesitamos esto? A veces cargar un paquete es demasiado para nuestra computadora, piensa que un paquete es como un foco, no prendes un foco que no utilizaras prontamente.
 
-```{r}
+```{r echo=T}
 graf2 <- datos %>% 
   mutate(cont = 1) %>% 
   filter(ano < 2019) %>% 
@@ -138,7 +136,7 @@ graf2 <- datos %>%
 
 Quitamos el año en cuestión y volvemos a graficar.En este caso, no filtramos utilizando el mismo objeto debido a que un factor no se puede filtrar.
 
-```{r}
+```{r echo=T}
 ggplot(graf2, aes(x = mes, y = porc, group = ano)) +
   geom_line(aes(color = ano)) +
   geom_point(aes(color = ano)) +
@@ -156,7 +154,7 @@ En este caso, agregamos nuevos argumentos en **theme**. *axis.text.x* es para mo
 
 Aunque son cosas sencillas, pueden ser interesantes para pensar y presentar puntos. Y aprovechando que tenemos una base con tantas variables, podemos jugar con los datos y ver que otras cosas aparecen. Por ejemplo:
 
-```{r}
+```{r echo=T}
 ggplot(datos, aes(x = edocivil_descripcion, y = edad)) +
   geom_boxplot() +
   labs(title = "Diagrama de caja y brazos por estado civil",
@@ -173,7 +171,7 @@ Por esta razón, esta gráfica muestra la distribución por edad de acuerdo al e
 
 Por último, vamos a hacer esta misma gráfica, pero la separaremos por años.
 
-```{r}
+```{r echo=T}
 ggplot(datos, aes(x = edocivil_descripcion, y = edad)) +
   geom_boxplot() +
   labs(title = "Diagrama de caja y brazos por estado civil",
@@ -183,9 +181,21 @@ ggplot(datos, aes(x = edocivil_descripcion, y = edad)) +
   facet_grid(ano ~ .)
 ```
 
-**facet** puede ser utilizado de manera fija (vertical u horizontal) con *facet_grid* o ajustarlo dentro de un rectangulo con *facet_wrap*. Los argumentos son los mismos en ambos casos: (variable1 ~ variable2). Con esto quiero decir que puede separar las graficas por otras variables. En este caso, vemos los diagramas de caja y brazos por año.
+**facet** puede ser utilizado de manera fija (vertical u horizontal) con *facet_grid* o ajustarlo dentro de un rectangulo con *facet_wrap*. Los argumentos son los mismos en ambos casos: (variable1 ~ variable2). Con esto quiero decir que puede separar las graficas por otras variables. En este caso, vemos los diagramas de caja y brazos por año. Pero así se ve muy feo, probemos otra configuración de los facet
 
-```{r}
+```{r echo=T}
+ggplot(datos, aes(x = edocivil_descripcion, y = edad)) +
+  geom_boxplot() +
+  labs(title = "Diagrama de caja y brazos por estado civil",
+    x = "", y = "Edad") +
+  scale_y_continuous(breaks = seq(10, 60, by = 2)) +
+  coord_flip() +
+  facet_grid(cols = vars(ano))
+```
+
+Aquí le específicamos a **R** que ponga un número de columnas igual al de nuestra variable de interés (como no la podemos "pasar" directamente utilizamos *vars* de dplyr). 
+
+```{r echo=T}
 datos %>% 
   mutate(
     nivel_edu = factor(nivel_edu,
@@ -206,4 +216,4 @@ datos %>%
 
 De manera similar, podemos observar el número de hijes por nivel educativo de las pacientes. Hay muchísimos valores atípicos. 
 
-Y con estas herramientas ahora ustedes pueden reaizar sus primeros análisis y empezar a jugar con otras bases de datos.
+Y con estas herramientas ahora ustedes pueden realizar sus primeros análisis y empezar a jugar con otras bases de datos.

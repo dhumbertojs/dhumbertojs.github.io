@@ -1,10 +1,12 @@
 ---
 title: "Proyecto nuevo para evadir mis responsabilidades"
 description: |
-  ¡hOLA MUNDO!
+  ¡Hola mundo!
 ---
 
 # Bienvenidas
 
-Esta es la versión 2.0 de mi blog (antes conocido como Maratón chafaram de sábado por la noche). **Blogdown** fue particularmente bueno, pero con la última actualización me perdí en el *workflow* y ya no supe crear nuevas entradas. Así que sujeten sus pantalones (si es que usan) y acompañenme a seguir jugando con R, Git y, recientemente, Distill.
+Esta es la versión 2.0 de mi blog (antes conocido como Maratón chafaram de sábado por la noche). **Blogdown** fue particularmente bueno, pero con la última actualización me perdí en el *workflow* y ya no supe crear nuevas entradas. Así que sujeten sus pantalones (si es que usan) y acompañenme a seguir jugando con R, Git y, recientemente, DISTILL.
+
+Si tienen sugerencias o comentarios, pueden mandarme un [DM](https://twitter.com/dhumbertoj) 
 

@@ -3,17 +3,17 @@
     {
       "path": "about.html",
       "title": "Proyecto nuevo para evadir mis responsabilidades",
-      "description": "¡hOLA MUNDO!",
+      "description": "¡Hola mundo!",
       "author": [],
-      "contents": "\r\nBienvenidas\r\nEsta es la versión 2.0 de mi blog (antes conocido como Maratón chafaram de sábado por la noche). Blogdown fue particularmente bueno, pero con la última actualización me perdí en el workflow y ya no supe crear nuevas entradas. Así que sujeten sus pantalones (si es que usan) y acompañenme a seguir jugando con R, Git y, recientemente, Distill.\r\n\r\n\r\n\r\n",
-      "last_modified": "2020-12-09T12:38:47-06:00"
+      "contents": "\r\nBienvenidas\r\nEsta es la versión 2.0 de mi blog (antes conocido como Maratón chafaram de sábado por la noche). Blogdown fue particularmente bueno, pero con la última actualización me perdí en el workflow y ya no supe crear nuevas entradas. Así que sujeten sus pantalones (si es que usan) y acompañenme a seguir jugando con R, Git y, recientemente, DISTILL.\r\nSi tienen sugerencias o comentarios, pueden mandarme un DM\r\n\r\n\r\n\r\n",
+      "last_modified": "2020-12-09T19:25:52-06:00"
     },
     {
       "path": "index.html",
       "title": "Proyecto nuevo para evadir mis responsabilidades",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2020-12-09T12:38:49-06:00"
+      "last_modified": "2020-12-09T19:25:55-06:00"
     }
   ],
   "collections": ["posts/posts.json"]
