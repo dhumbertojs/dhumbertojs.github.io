@@ -1,0 +1,2058 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>A 3 años del sismo... desde las solicitudes de información</title>
+  
+  <meta property="description" itemprop="description" content="Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-09-24"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-09-24"/>
+  <meta name="article:author" content="David H. Jiménez"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="A 3 años del sismo... desde las solicitudes de información"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="A 3 años del sismo... desde las solicitudes de información"/>
+  <meta property="twitter:description" content="Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["A 3 años del sismo... desde las solicitudes de información"]},{"type":"character","attributes":{},"value":["Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["David H. Jiménez"]}]}]},{"type":"character","attributes":{},"value":["09-24-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/anchor-4.2.2/anchor.min.js","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/bowser-1.9.3/bowser.min.js","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/distill-2.2.21/template.v2.js","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-14-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-15-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-16-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-17-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-18-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-19-1.png","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/jquery-1.11.3/jquery.min.js","a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"A 3 años del sismo... desde las solicitudes de información","description":"Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S.","authors":[{"author":"David H. Jiménez","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-09-24T00:00:00.000-05:00","citationText":"Jiménez, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>A 3 años del sismo… desde las solicitudes de información</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S.</p></p>
+</div>
+
+<div class="d-byline">
+  David H. Jiménez  
+  
+<br/>09-24-2020
+</div>
+
+<div class="d-article">
+<h1 id="holi">Holi…</h1>
+<p>¡Bienvenidas! (?) Dejé esto abandonado por algún tiempo, la pandemia me dejo todo revuelto y apenas he retomado muchas de las actividades que mantenían mi cordura. Ahora, quiero escribir sobre algo que hice en el trabajo, y un par de trucos para empezar a usar <strong>purrr::map()</strong> y facilitarse la vida con tareas repetitivas.</p>
+<p>Actualmente trabajo en el Instituto de Transparencia, Acceso a la Información Pública, Protección de Datos Personales y Rendición de Cuentas de la Ciudad de México (INFO CDMX, pa’ los cuates). Aquí, hay un área que se dedica a procesar datos estadísticos de las solicitudes, y a principios de este mes (septiembre) se realizó el <a href="https://infocdmx.org.mx/reconstruccionabiertaCDMX/programa/"><em>2° Coloquio Internacional por una reconstrucción abierta en la CDMX</em></a> en donde se abrieron datos sobre solicitudes referentes al sismo del 19 de septiembre de 2017.</p>
+<p>Entonces, vamos a utilizar las bases de datos disponibles. Van a la sección de <a href="https://infocdmx.org.mx/reconstruccionabiertaCDMX/multimedia/">multimedia</a> y van a descargar el archivo zip que dice repositorio y lo van a descomprimir. Como es un archivo zip, no deberían tener ningún problema, si no pueden descargar <a href="https://www.winrar.es/descargas/103/descargar-winrar-para-windows-x64-en-espanol">winrar</a> (esto no es un comercial, pero me parece el más útil).</p>
+<p>En el archivo van a encontrar:</p>
+<ol type="1">
+<li>Un archivo con todas las solicitudes.</li>
+<li>Tres archivos con las solicitudes por año, es decir un archivo con todas las solicitudes de 2017, 2018 y 2019.</li>
+<li>Tres carpetas con los archivos individuales por año. En este caso, cada carpeta tiene los archivos de las dependencias e instituciones que recibieron solicitudes. Por ejemplo, <em>Delegación Benito Juárez-2017.xlsx</em>.</li>
+</ol>
+<p>El origen de estos datos es de las solicitudes de información realizadas durante el periodo registrado, así como la integración de la información por los sujetos obligados (nombre para las instituciones que reciben y ejercen recursos públicos de manera sistemática, desde secretarías hasta sindicatos). Entonces, además de poder observar los textos de las solicitudes, podemos acceder a algunos datos sociodemográficos. Y ahora sí, con el código :D</p>
+<h2 id="libraries-o-paquetes">Libraries o paquetes</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readxl.tidyverse.org'>readxl</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://purrr.tidyverse.org'>purrr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://scales.r-lib.org'>scales</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://lubridate.tidyverse.org'>lubridate</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Como siempre, lo primero es “llamar” los paquetes. Y luego, definir los “directorios”, es decir las carpetas donde tenemos los archivos que vamos a trabajar. Por eso es muy importante que tengan orden en sus carpetas, sino puede ser muy complicado trabajar.</p>
+<p>Intenté hacerlo con <em>setwd()</em>, que es la manera base, pero la verdad era demasiado escribir y copiar. Si quieren intentarlo tendrían que poner algo así: <strong>setwd(“/Users/equipo/carpeta/Bases de SIP sobre reconstrucción en la CDMX”)</strong>.</p>
+<p>Pero yo, como siempre, haré que mis directorios sean objetos de r:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>input</span> <span class='op'>&lt;-</span> <span class='st'>"/Users/dhjs/Documents/projects/data_blog/Bases de SIP sobre reconstrucción en la CDMX"</span>
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='va'>input</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] &quot;2017&quot;                                                                
+[2] &quot;2017 final.xlsx&quot;                                                     
+[3] &quot;2018&quot;                                                                
+[4] &quot;2018 final.xlsx&quot;                                                     
+[5] &quot;2019&quot;                                                                
+[6] &quot;2019 final.xlsx&quot;                                                     
+[7] &quot;2020.09.03_Nota-Criterios de_Bases SIP-Reconstrucción 2017-2019.docx&quot;
+[8] &quot;Bases de SIP sobre reconstrucción en la CDMX.rar&quot;                    
+[9] &quot;Reconstruccion consolidada.xlsx&quot;                                     </code></pre>
+</div>
+<p>Puse un punto <strong>“.”</strong> porque para publicar esto r siempre me pone un directorio <em>default</em>, entonces el punto signfica lo mismo que copiar este directorio. Y quiero que exploremos esta manera de utilizar directorios.</p>
+<p>Ahora, podemos hacer varias cosas: dado que en la carpeta que descomprimimos viene un único archivo con todas las solicitudes de información, obviamente sería más fácil trabajar así. Pero, no aprenderíamos a trabajar con múltiples archivos al mismo tiempo.</p>
+<p>Entonces, vamos a utilizar las carpetas con los archivos individuales. De este modo, podríamos “leer” cada archivo de manera individual de la siguiente manera:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>archivo1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"/2017/Delegación Álvaro Obregón-2017.xlsx"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2017"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;Delegación Álvaro Obregón-2017.xlsx&quot;                                                  
+ [2] &quot;Delegación Azcapotzalco-2017.xlsx&quot;                                                    
+ [3] &quot;Delegación Benito Juárez-2017.xlsx&quot;                                                   
+ [4] &quot;Delegación Coyoacán-2017.xlsx&quot;                                                        
+ [5] &quot;Delegación Cuajimalpa de Morelos-2017.xlsx&quot;                                           
+ [6] &quot;Delegación Cuauhtémoc-2017.xlsx&quot;                                                      
+ [7] &quot;Delegación Gustavo A. Madero-2017.xlsx&quot;                                               
+ [8] &quot;Delegación Iztacalco-2017.xlsx&quot;                                                       
+ [9] &quot;Delegación Iztapalapa-2017.xlsx&quot;                                                      
+[10] &quot;Delegación La Magdalena Contreras-2017.xlsx&quot;                                          
+[11] &quot;Delegación Miguel Hidalgo-2017.xlsx&quot;                                                  
+[12] &quot;Delegación Milpa Alta-2017.xlsx&quot;                                                      
+[13] &quot;Delegación Tláhuac-2017.xlsx&quot;                                                         
+[14] &quot;Delegación Tlalpan-2017.xlsx&quot;                                                         
+[15] &quot;Delegación Venustiano Carranza-2017.xlsx&quot;                                             
+[16] &quot;Delegación Xochimilco-2017.xlsx&quot;                                                      
+[17] &quot;Instituto de Vivienda del Distrito Federal-2017.xlsx&quot;                                 
+[18] &quot;Instituto Local de la Infraestructura Física Educativa del Distrito Federal-2017.xlsx&quot;
+[19] &quot;Instituto para la Seguridad de las Construcciones en el Distrito Federal-2017.xlsx&quot;   
+[20] &quot;Jefatura de Gobierno del Distrito Federal-2017.xlsx&quot;                                  
+[21] &quot;Secretaría de Desarrollo Urbano y Vivienda-2017.xlsx&quot;                                 
+[22] &quot;Secretaría de Educación-2017.xlsx&quot;                                                    
+[23] &quot;Secretaría de Obras y Servicios-2017.xlsx&quot;                                            </code></pre>
+</div>
+<p>Lo primero que podemos notar es que son 23 archivos para el año 2017… Entonces, cargar cada archivo, sabiendo que tienen la misma estructura, es poco eficiente, especialmente si pensamos que todavía nos faltan los datos de 2018 y 2019.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2018"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;Comisión para la Reconstrucción-2018.xlsx&quot;                                                                                           
+ [2] &quot;Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2018.xlsx&quot;
+ [3] &quot;Delegación Álvaro Obregón-2018.xlsx&quot;                                                                                                 
+ [4] &quot;Delegación Azcapotzalco-2018.xlsx&quot;                                                                                                   
+ [5] &quot;Delegación Benito Juárez-2018.xlsx&quot;                                                                                                  
+ [6] &quot;Delegación Coyoacán-2018.xlsx&quot;                                                                                                       
+ [7] &quot;Delegación Cuajimalpa de Morelos-2018.xlsx&quot;                                                                                          
+ [8] &quot;Delegación Cuauhtémoc-2018.xlsx&quot;                                                                                                     
+ [9] &quot;Delegación Gustavo A. Madero-2018.xlsx&quot;                                                                                              
+[10] &quot;Delegación Iztacalco-2018.xlsx&quot;                                                                                                      
+[11] &quot;Delegación Iztapalapa-2018.xlsx&quot;                                                                                                     
+[12] &quot;Delegación La Magdalena Contreras-2018.xlsx&quot;                                                                                         
+[13] &quot;Delegación Miguel Hidalgo-2018.xlsx&quot;                                                                                                 
+[14] &quot;Delegación Milpa Alta-2018.xlsx&quot;                                                                                                     
+[15] &quot;Delegación Tláhuac-2018.xlsx&quot;                                                                                                        
+[16] &quot;Delegación Tlalpan-2018.xlsx&quot;                                                                                                        
+[17] &quot;Delegación Venustiano Carranza-2018.xlsx&quot;                                                                                            
+[18] &quot;Delegación Xochimilco-2018.xlsx&quot;                                                                                                     
+[19] &quot;Instituto de Vivienda del Distrito Federal-2018.xlsx&quot;                                                                                
+[20] &quot;Instituto Local de la Infraestructura Física Educativa del Distrito Federal-2018.xlsx&quot;                                               
+[21] &quot;Instituto para la Seguridad de las Construcciones en el Distrito Federal-2018.xlsx&quot;                                                  
+[22] &quot;Jefatura de Gobierno del Distrito Federal-2018.xlsx&quot;                                                                                 
+[23] &quot;Secretaría de Desarrollo Urbano y Vivienda-2018.xlsx&quot;                                                                                
+[24] &quot;Secretaría de Educación-2018.xlsx&quot;                                                                                                   
+[25] &quot;Secretaría de Obras y Servicios-2018.xlsx&quot;                                                                                           </code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2019"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;Alcaldía Álvaro Obregón-2019.xlsx&quot;                                                                                                   
+ [2] &quot;Alcaldía Azcapotzalco-2019.xlsx&quot;                                                                                                     
+ [3] &quot;Alcaldía Benito Juárez-2019.xlsx&quot;                                                                                                    
+ [4] &quot;Alcaldía Coyoacán-2019.xlsx&quot;                                                                                                         
+ [5] &quot;Alcaldía Cuajimalpa de Morelos-2019.xlsx&quot;                                                                                            
+ [6] &quot;Alcaldía Cuauhtémoc-2019.xlsx&quot;                                                                                                       
+ [7] &quot;Alcaldía Gustavo A. Madero-2019.xlsx&quot;                                                                                                
+ [8] &quot;Alcaldía Iztacalco-2019.xlsx&quot;                                                                                                        
+ [9] &quot;Alcaldía Iztapalapa-2019.xlsx&quot;                                                                                                       
+[10] &quot;Alcaldía La Magdalena Contreras-2019.xlsx&quot;                                                                                           
+[11] &quot;Alcaldía Miguel Hidalgo-2019.xlsx&quot;                                                                                                   
+[12] &quot;Alcaldía Milpa Alta-2019.xlsx&quot;                                                                                                       
+[13] &quot;Alcaldía Tláhuac-2019.xlsx&quot;                                                                                                          
+[14] &quot;Alcaldía Tlalpan-2019.xlsx&quot;                                                                                                          
+[15] &quot;Alcaldía Venustiano Carranza-2019.xlsx&quot;                                                                                              
+[16] &quot;Alcaldía Xochimilco-2019.xlsx&quot;                                                                                                       
+[17] &quot;Comisión para la Reconstrucción-2019.xlsx&quot;                                                                                           
+[18] &quot;Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2019.xlsx&quot;
+[19] &quot;Instituto de Vivienda de la Ciudad de México-2019.xlsx&quot;                                                                              
+[20] &quot;Instituto Local de la Infraestructura Física Educativa de la Ciudad de México-2019.xlsx&quot;                                             
+[21] &quot;Instituto para la Seguridad de las Construcciones en la Ciudad de México-2019.xlsx&quot;                                                  
+[22] &quot;Jefatura de Gobierno de la Ciudad de México-2019.xlsx&quot;                                                                               
+[23] &quot;Secretaría de Administración y Finanzas-2019.xlsx&quot;                                                                                   
+[24] &quot;Secretaría de Desarrollo Urbano y Vivienda-2019.xlsx&quot;                                                                                
+[25] &quot;Secretaría de Educación, Ciencia, Tecnología e Innovación-2019.xlsx&quot;                                                                 
+[26] &quot;Secretaría de Gestión Integral de Riesgos y Protección Civil-2019.xlsx&quot;                                                              
+[27] &quot;Secretaría de Inclusión y Bienestar Social-2019.xlsx&quot;                                                                                
+[28] &quot;Secretaría de Obras y Servicios-2019.xlsx&quot;                                                                                           </code></pre>
+</div>
+<p>Parece intimidante, ¿no? Leer 74 archivos para empezar a trabajar… Pero para eso tenemos <strong>purrr</strong>.</p>
+<h2 id="purrrmap">purrr::map()</h2>
+<p>Este paquete nos permite realizar tareas de <em>Functional programming</em> una palabra elegante para decir realizar tareas repetitivas de manera más rápida y eficiente. Pueden consultar la documentación <a href="https://purrr.tidyverse.org/">aquí</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>primer</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2017"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>primer_e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='va'>primer</span>, 
+                <span class='op'>~</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2017"</span>, <span class='va'>.x</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'>#View(primer_e)</span>
+</code></pre>
+</div>
+</div>
+<p>Con este código ya abrimos los 23 archivos de excel :D</p>
+<p>Pero, aún no podemos usarlos como base de datos :(</p>
+<p>Esto se debe a que <strong>map</strong> es una función especial de purrr. Ya vimos lo que hace, pero no sabemos porque.</p>
+<p><strong>map</strong> nos permite aplicar una función a todos los elementos de una lista o vector que nosotros le proporcionemos. En este caso, utilicé <em>list.files</em> para crear un objeto llamado <em>primer</em>.</p>
+<p>Luego, le decimos que función queremos que aplique. Como queremos que lea exceles, le ponemos <em>read_excel</em>. Y aquí vamos a repasar todo. Esta función tiene un montón de parámetros para leer exceles. Pero por ahora nos importa uno: donde está el archivo <strong>path = </strong>. Aquí utilicé una función <em>paste</em> que sirve para pegar <em>strings</em> lo que nos permite abrir los archivos de excel.</p>
+<ul>
+<li>input, como mencioné es la carpeta con todos los datos descomprimidos.</li>
+<li>2017 es la carpeta del año con los archivos individuales</li>
+<li><strong>.x</strong> es un argumento de la función <em>map</em> es el i-esímo objeto al que le aplicaremos la función. Como espero hayas notado, primer es el objeto con la lista de archivos excel dentro de la carpeta, por eso necesito el <em>paste</em> para que vaya cambiando. En otras palabras, el .x es la variable que ira cambiando hasta que termine de leer los archivos.</li>
+</ul>
+<p>Ahora lo que queremos es poder utilizar los datos como siempre, en un <em>data frame</em>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>primer_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>primer_e</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>primer_f</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 2541   40</code></pre>
+</div>
+<p>Como sabemos que todo tiene la misma estructura podemos combinar los archivos por renglones. Estamos pegando un archivo debajo de otro, debajo de otro y así, siempre y cuando tengan los mismos encabezados. Esto último es fundamental porque <strong>bind_rows</strong> es un función de <em>dplyr</em> y si no tienen los mismo encabezados y dimensiones no podríamos hacerlo. No es como su “primo” <strong>cbind</strong> de r base, que solo necesita que tenga el mismo número de columnas y lo une como esté. A veces la utilizaremos, pero necesitamos estar seguras de cómo y cuándo.</p>
+<p>SOlo falta hacer lo mismo para los otros años:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>segundo</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2018"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>segundo_e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='va'>segundo</span>, 
+                <span class='op'>~</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2018"</span>, <span class='va'>.x</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>segundo_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>segundo_e</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>segundo_f</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 3241   40</code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>tercer</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2019"</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>tercer_e</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://purrr.tidyverse.org/reference/map.html'>map</a></span><span class='op'>(</span><span class='va'>tercer</span>, 
+                <span class='op'>~</span> <span class='fu'><a href='https://readxl.tidyverse.org/reference/read_excel.html'>read_excel</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>input</span>, <span class='st'>"2019"</span>, <span class='va'>.x</span>, sep <span class='op'>=</span> <span class='st'>"/"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='va'>tercer_f</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>tercer_e</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>tercer_f</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 1717   40</code></pre>
+</div>
+<p>En el caso de 2018, les va a salir un error, y es que el nombre del primer archivo es estupidamente largo: “Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2018.lsx” por eso hay que cambiarlo a mano en nuestra carpeta. A <strong>map</strong> no le importa los nombres de los arhivos, pero sí la longitud de los <em>strings</em>. Si creen que el nombre es demasiado largo, tal vez tengan razón. Porque lo mismo pasa para el 2019: “Comisión para la Reconstrucción, Recuperación y Transformación de la Ciudad de México, en una CDMX cada vez más resiliente-2019.xlsx”</p>
+<p>Y todas tienen 40 columnas :D Entonces, el siguiente paso es más fácil. Ahora tenemos 3 archivos, uno correspondiente a cada año. Pero, generalmente, es más fácil tener todo dentro de una sola base de datos.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span><span class='op'>(</span><span class='va'>primer_f</span>, <span class='va'>segundo_f</span>, <span class='va'>tercer_f</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 7499   40</code></pre>
+</div>
+<h2 id="gráficas">Gráficas</h2>
+<p>Ahora tenemos una base de datos con 6,819 renglones y 40 columnas. Y con esto podemos ponernos a hacer algunas gráficas.</p>
+<p>Pero, hay un pequeño, pequeñísimo problema… Los nombres de las columnas.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code> [1] &quot;No.&quot;                                                                                                                  
+ [2] &quot;Sujeto_N&quot;                                                                                                             
+ [3] &quot;Sujeto&quot;                                                                                                               
+ [4] &quot;Organo_N&quot;                                                                                                             
+ [5] &quot;Clave&quot;                                                                                                                
+ [6] &quot;Propio&quot;                                                                                                               
+ [7] &quot;( A )\r\n\r\nFolio&quot;                                                                                                   
+ [8] &quot;( B )\r\n\r\nFecha de presentación de la solicitud\r\n\r\ndd/mm/aaaa&quot;                                                 
+ [9] &quot;( C )\r\n\r\nMedio por el que se presentó la solicitud&quot;                                                               
+[10] &quot;( D )\r\n\r\nInformación objeto de la solicitud \r\n\r\n(PROTEGER EN TODO MOMENTO LOS DATOS PERSONALES)&quot;              
+[11] &quot;( E )\r\n\r\nN° de preguntas que comprende la solicitud&quot;                                                              
+[12] &quot;( F )\r\n\r\nTemática de la información requerida&quot;                                                                    
+[13] &quot;( F_1 )\r\n\r\nÁrea de interés del Solictante&quot;                                                                        
+[14] &quot;( G )\r\n\r\nLa información solicitada fue de oficio&quot;                                                                 
+[15] &quot;( H )\r\n\r\nEstado en que se encontraba la solicitud&quot;                                                                
+[16] &quot;prevencion_solicitante&quot;                                                                                               
+[17] &quot;( I_1 )\r\n\r\nFecha en la que el solicitante atendió la prevención&quot;                                                  
+[18] &quot;( I_2 )\r\n\r\n¿La solicitud de información pública fue prevenida total o parcialmente?&quot;                              
+[19] &quot;( I_3 )\r\n\r\nNúmero de preguntas fueron prevenidas&quot;                                                                 
+[20] &quot;( J )\r\n\r\n¿Se notificó al solicitante ampliación de plazo para entregar la información?&quot;                           
+[21] &quot;( K )\r\n\r\nModalidad de repuesta&quot;                                                                                   
+[22] &quot;( L_1 ) \r\n\r\nTotal de Entes públicos a los que se turnó la solicitud&quot;                                              
+[23] &quot;( L_2 ) \r\n\r\nEnte Público al \r\nque se turnó la solicitud&quot;                                                        
+[24] &quot;( M )\r\n\r\n¿Se entregó o se envió por algún medio la información al solicitante?&quot;                                   
+[25] &quot;( N )\r\n\r\nPara la entrega de información, ¿se le requirió al solicitante algún monto por concepto de reproducción?&quot;
+[26] &quot;( O )\r\n\r\nMonto total requerido por concepto de reproducción&quot;                                                      
+[27] &quot;( P )\r\n\r\nMedio por el que se puso a disposición la información solicitada&quot;                                        
+[28] &quot;( Q )\r\n\r\nFecha en que se notificó la respuesta o se turnó la solicitud\r\n\r\ndd/mm/aaaa&quot;                         
+[29] &quot;( R )\r\n\r\nMedio por el que se notificó la respuesta&quot;                                                               
+[30] &quot;( S )\r\n\r\nDías HÁBILES  transcurridos entre la recepción de la solicitud y la notificación de respuesta&quot;           
+[31] &quot;( T )\r\n\r\nNo. de Servidores Públicos directamente involucrados en la respuesta de la solicitud&quot;                    
+[32] &quot;( U )\r\n\r\nSexo del solicitante&quot;                                                                                    
+[33] &quot;( V )\r\n\r\nEdad del solicitante&quot;                                                                                    
+[34] &quot;( W )\r\n\r\nOcupación del solicitante&quot;                                                                               
+[35] &quot;( X )\r\n\r\nEscolaridad del solicitante&quot;                                                                             
+[36] &quot;( Y )\r\n\r\nEstado de la República Mexicana o país que corresponde a la dirección que registró el solicitante&quot;       
+[37] &quot;( Z )\r\n\r\nObservaciones&quot;                                                                                           
+[38] &quot;mes&quot;                                                                                                                  
+[39] &quot;year&quot;                                                                                                                 
+[40] &quot;clasificacion&quot;                                                                                                        </code></pre>
+</div>
+<p>Aquí, sí se ven las diagonales inversas, si lo abren en excel verán que está en varios renglones, pero esto es muy difícil de trabajar en r. Para solucionar esto, vamos a cambiarle los nombres a todas las variables.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>nombres</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+  <span class='st'>"No."</span>, 
+  <span class='st'>"Sujeto_N"</span>, 
+  <span class='st'>"Sujeto"</span>, 
+  <span class='st'>"Organo_N"</span>, 
+  <span class='st'>"clave"</span>,
+  
+  <span class='st'>"propio"</span>,
+  <span class='st'>"Folio"</span>, 
+  <span class='st'>"fecha_presentacion"</span>, 
+  <span class='st'>"Medio_presento"</span>, 
+  <span class='st'>"Informacion_objeto"</span>, 
+  
+  <span class='st'>"Preguntas_solicitud"</span>, 
+  <span class='st'>"Tematica_solicitud"</span>, 
+  <span class='st'>"Area_interes"</span>, 
+  <span class='st'>"info_de_oficio"</span>, 
+  <span class='st'>"Estado_info"</span>, 
+  
+  <span class='st'>"prevencion_solicitante"</span>, 
+  <span class='st'>"fecha_prevencion"</span>, 
+  <span class='st'>"solicitud_prevenida"</span>, 
+  <span class='st'>"preguntas_prevenidas"</span>, 
+  <span class='st'>"notificar_ampliacion"</span>, 
+  
+  <span class='st'>"modalidad_respuesta"</span>, 
+  <span class='st'>"total_entes_turnados"</span>, 
+  <span class='st'>"ente_turnado"</span>, 
+  <span class='st'>"info_entregada"</span>, 
+  <span class='st'>"costo_reproduccion"</span>, 
+  
+  <span class='st'>"monto_reproduccion"</span>, 
+  <span class='st'>"medio_disposicion_info"</span>, 
+  <span class='st'>"fecha_notificacion"</span>, 
+  <span class='st'>"medio_notificacion"</span>, 
+  <span class='st'>"dias_transcurridos_recepcion_notificacion"</span>,
+  
+  <span class='st'>"Servidores_publicos_involucrados"</span>, 
+  <span class='st'>"sexo"</span>, 
+  <span class='st'>"edad"</span>, 
+  <span class='st'>"ocupacion"</span>, 
+  <span class='st'>"escolaridad"</span>, 
+  
+  <span class='st'>"entidad_federativa"</span>, 
+  <span class='st'>"observaciones"</span>,
+  <span class='st'>"mes"</span>, 
+  <span class='st'>"year"</span>,
+  <span class='st'>"clasificacion"</span>
+<span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='va'>nombres</span>
+</code></pre>
+</div>
+</div>
+<p>Puse cada nombre en un reglón y un espacio cada 5 nombres, para no perderme, si se saben otra manera avísenme :P</p>
+<p>Además de cambiarle el nombre, vamos a utilizar la forma en que se procesan los datos: cambiar categorías, agrupar, crear nuevas variables, etc. Esto lo voy a hacer porque estoy familiarizado con este procesamiento. Creo que el código es autoexplicativo, pero si tienen alguna duda mandenme un DM en <a href="https://twitter.com/dhumbertoj">twitter</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>semana <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/week.html'>week</a></span><span class='op'>(</span><span class='va'>fecha_presentacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>Sujeto_N</span>, <span class='va'>semana</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/distinct.html'>distinct</a></span><span class='op'>(</span><span class='va'>Informacion_objeto</span>, .keep_all <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    clasificacion <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>clasificacion</span>,
+                                    <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"daños"</span> <span class='op'>=</span> <span class='st'>"Daños"</span>, <span class='st'>"evaluacion"</span> <span class='op'>=</span> <span class='st'>"Evaluación"</span>, 
+                                      <span class='st'>"fondos"</span> <span class='op'>=</span> <span class='st'>"Fondos"</span>, <span class='st'>"legalidad"</span> <span class='op'>=</span> <span class='st'>"Legalidad"</span>,
+                                      <span class='st'>"prevencion"</span> <span class='op'>=</span> <span class='st'>"Prevención"</span>, <span class='st'>"reconstruccion"</span> <span class='op'>=</span> <span class='st'>"Reconstrucción"</span>, 
+                                      <span class='st'>"respuesta al sismo"</span> <span class='op'>=</span> <span class='st'>"Respuesta al sismo"</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    Tematica_solicitud <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>Tematica_solicitud</span>, <span class='st'>"Otros"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, 
+                                <span class='st'>"Otros"</span>, 
+                                <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Tematica_solicitud</span> <span class='op'>==</span> <span class='st'>"Datos Personales"</span>, 
+                                       <span class='st'>"Otros"</span>, <span class='va'>Tematica_solicitud</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    modalidad_respuesta_2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>modalidad_respuesta</span>, <span class='st'>"Aceptada"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, 
+                                   <span class='st'>"Aceptada"</span>, 
+                                   <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>modalidad_respuesta</span>, <span class='st'>"restringido"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, 
+                                          <span class='st'>"Acceso restringido"</span>, <span class='va'>modalidad_respuesta</span><span class='op'>)</span><span class='op'>)</span>,
+    edad <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>edad</span><span class='op'>)</span>,
+    
+    grupo_edad <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&lt;=</span> <span class='fl'>19</span>, <span class='st'>"Hasta 19 años"</span>,
+                        <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;</span> <span class='fl'>19</span> <span class='op'>&amp;</span> <span class='va'>edad</span> <span class='op'>&lt;</span> <span class='fl'>30</span>, <span class='st'>"De 20 a 29 años"</span>,
+                               <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;=</span> <span class='fl'>30</span> <span class='op'>&amp;</span> <span class='va'>edad</span> <span class='op'>&lt;</span> <span class='fl'>40</span>, <span class='st'>"De 30 a 39 años"</span>,
+                                      <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;=</span> <span class='fl'>40</span> <span class='op'>&amp;</span> <span class='va'>edad</span> <span class='op'>&lt;</span> <span class='fl'>50</span>, <span class='st'>"De 40 a 49 años"</span>,
+                                             <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;=</span> <span class='fl'>50</span> <span class='op'>&amp;</span> <span class='va'>edad</span> <span class='op'>&lt;</span> <span class='fl'>60</span>, <span class='st'>"De 50 a 59 años"</span>,
+                                                    <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;=</span> <span class='fl'>60</span> <span class='op'>&amp;</span> <span class='va'>edad</span> <span class='op'>&lt;</span> <span class='fl'>70</span>, <span class='st'>"De 60 a 69 años"</span>, 
+                                                           <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>edad</span> <span class='op'>&gt;=</span> <span class='fl'>70</span>, <span class='st'>"70 o mas años"</span>, <span class='va'>edad</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    grupo_edad <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>grupo_edad</span>, levels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Hasta 19 años"</span>,<span class='st'>"De 20 a 29 años"</span>,<span class='st'>"De 30 a 39 años"</span>,
+                                               <span class='st'>"De 40 a 49 años"</span>, <span class='st'>"De 50 a 59 años"</span>, <span class='st'>"De 60 a 69 años"</span>, 
+                                               <span class='st'>"70 o mas años"</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    escolaridad <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>escolaridad</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Bachillerato o carrera técnica"</span> <span class='op'>=</span> <span class='st'>"Bachillerato"</span>,
+                                                 <span class='st'>"Bachillerato"</span> <span class='op'>=</span> <span class='st'>"Bachillerato o carrera técnica"</span>,
+                                                 <span class='st'>"Maestría o Doctorado"</span> <span class='op'>=</span> <span class='st'>"Maestría o doctorado"</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    ocupacion <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Otros - Amas de Casa"</span> <span class='op'>=</span> <span class='st'>"Hogar"</span>,
+                                             <span class='st'>"Otros - Organizaciones No Gubernamentales Internacionales"</span> <span class='op'>=</span> <span class='st'>"ONG"</span>,
+                                             <span class='st'>"Otros - Organizaciones No Gubernamentales Nacionales"</span> <span class='op'>=</span> <span class='st'>"ONG"</span>,
+                                             <span class='st'>"Otros - Asociación política"</span> <span class='op'>=</span> <span class='st'>"Asociación política"</span>,
+                                             <span class='st'>"Servidor Público"</span> <span class='op'>=</span> <span class='st'>"Servicio público"</span>,
+                                             <span class='st'>"Otros - Comerciante"</span> <span class='op'>=</span> <span class='st'>"Comercio"</span>,
+                                             <span class='st'>"Otros - Empleado u obrero"</span> <span class='op'>=</span> <span class='st'>"Empleada/o u obrera/o"</span>,
+                                             <span class='st'>"Empleado u obrero"</span> <span class='op'>=</span> <span class='st'>"Empleada/o u obrera/o"</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    ocupacion <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='st'>"Académico"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, <span class='st'>"Académico o estudiante"</span>,
+                       <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='st'>"Empresarial"</span><span class='op'>)</span><span class='op'>==</span> <span class='cn'>T</span>, <span class='st'>"Empresa"</span>,
+                              <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='st'>"Gubernamental"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, <span class='st'>"Servicio público"</span>,
+                                     <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='st'>"omunicación"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, <span class='st'>"Medios de comunicación"</span>, 
+                                            <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>ocupacion</span>, <span class='st'>"Otro"</span><span class='op'>)</span> <span class='op'>==</span> <span class='cn'>T</span>, <span class='st'>"Otro"</span>, <span class='va'>ocupacion</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    Organo_N <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>Organo_N</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>
+      <span class='st'>"1"</span> <span class='op'>=</span> <span class='st'>"Administración Pública Central"</span>,
+      <span class='st'>"2"</span> <span class='op'>=</span> <span class='st'>"Desconcentrados y Paraestales"</span>,
+      <span class='st'>"3"</span> <span class='op'>=</span> <span class='st'>"Alcaldías"</span>,
+      <span class='st'>"4"</span> <span class='op'>=</span> <span class='st'>"Judicial"</span>,
+      <span class='st'>"5"</span> <span class='op'>=</span> <span class='st'>"Legislativo"</span>,
+      <span class='st'>"6"</span> <span class='op'>=</span> <span class='st'>"Autónomo"</span>, 
+      <span class='st'>"7"</span> <span class='op'>=</span> <span class='st'>"Partidos Políticos"</span>,
+      <span class='st'>"8"</span> <span class='op'>=</span> <span class='st'>"Sindicatos"</span>
+    <span class='op'>)</span><span class='op'>)</span>,
+    
+    Preguntas_solicitud <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Preguntas_solicitud</span><span class='op'>)</span>,
+    
+    preguntas_prevenidas <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>preguntas_prevenidas</span><span class='op'>)</span>,
+    
+    total_entes_turnados <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>total_entes_turnados</span><span class='op'>)</span>,
+    
+    info_entregada_2 <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>info_entregada</span>, <span class='st'>"No"</span><span class='op'>)</span>, <span class='st'>"No"</span>,
+                              <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_detect.html'>str_detect</a></span><span class='op'>(</span><span class='va'>info_entregada</span>, <span class='st'>"Si"</span><span class='op'>)</span>, 
+                                     <span class='st'>"S?"</span>, <span class='va'>info_entregada</span><span class='op'>)</span><span class='op'>)</span>,
+    
+    dias_transcurridos_recepcion_notificacion <span class='op'>=</span> 
+      <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>dias_transcurridos_recepcion_notificacion</span><span class='op'>)</span>,
+    
+    Servidores_publicos_involucrados <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>Servidores_publicos_involucrados</span><span class='op'>)</span>,
+    
+    sexo <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_replace.html'>str_replace_all</a></span><span class='op'>(</span><span class='va'>sexo</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Femenino"</span> <span class='op'>=</span> <span class='st'>"Mujeres"</span>, <span class='st'>"Masculino"</span> <span class='op'>=</span> <span class='st'>"Hombres"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 5168   44</code></pre>
+</div>
+<p>Lo que me gustaría enfatizar son las primeras 5 líneas de código. Yo revise esta base de datos y sé que hay muchas solicitudes repetidas. Pero, no puedo descartarlas solo por el hecho de estar repetidas. Quizás una persona estuvo realizando la misma solicitud sistemáticamente cada semana, o quizás a una persona se le fue el internet al terminar y realizó exactamente la misma solicitud. Por esa razón, y siguiendo los criterios del <a href="http://www.revistas.unam.mx/index.php/encrucijada/article/view/71485">Natalia Torres y Guillermo Cejudo</a> para que solo se quede una solicitud con el mismo texto a la semana. Es decir, si es idéntico el texto de dos solicitudes con folio diferentes, y se presentó en la misma semana, solo se contará la más antigua.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>colores</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Daños"</span> <span class='op'>=</span> <span class='st'>"#ae3a3d"</span>, <span class='st'>"Evaluación"</span> <span class='op'>=</span> <span class='st'>"#fc8d33"</span>, 
+             <span class='st'>"Fondos"</span> <span class='op'>=</span> <span class='st'>"#faef59"</span>, <span class='st'>"Legalidad"</span> <span class='op'>=</span> <span class='st'>"#bcfa3d"</span>, 
+             <span class='st'>"Prevención"</span> <span class='op'>=</span> <span class='st'>"#4fc6c4"</span>, <span class='st'>"Reconstrucción"</span> <span class='op'>=</span> <span class='st'>"#FF0066"</span>, 
+             <span class='st'>"Respuesta al sismo"</span> <span class='op'>=</span> <span class='st'>"#6600cc"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Códigos de colores para que todas las gráficas estén uniformes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>tyear <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>clasificacion</span>, <span class='va'>tyear</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>tclas <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>porc <span class='op'>=</span> <span class='va'>tclas</span><span class='op'>/</span><span class='va'>tyear</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>porc</span>, fill <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span>, stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>percent_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Solicitudes por tema"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"Dividido por año"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span>, fill <span class='op'>=</span> <span class='st'>"Clasificación"</span>, 
+       caption <span class='op'>=</span> <span class='st'>"Incluye personas que no proporcionaron información sociodemográfica.\nTotal de observaciones = 5,168"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-14-1.png" width="624" /></p>
+</div>
+<p>Ahora, aquí vemos que las solicitudes se concentran en un par de clasificaciones y R lo ajusta al tamaño de la pantalla. Pero acabo de leer un librito que les recomiendo mucho <em>How charts lie: Getting Smarter about Visual Information</em> sobre como entender mejor las gráficas y diseñarlas. En este sentido, quiero ver como se ve cuando el límite es 100%</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>tyear <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>clasificacion</span>, <span class='va'>tyear</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>tclas <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>porc <span class='op'>=</span> <span class='va'>tclas</span><span class='op'>/</span><span class='va'>tyear</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>year</span>, y <span class='op'>=</span> <span class='va'>porc</span>, fill <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span>, stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/lims.html'>ylim</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>1</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Solicitudes por tema"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"Dividido por año"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span>, fill <span class='op'>=</span> <span class='st'>"Clasificación"</span>, 
+       caption <span class='op'>=</span> <span class='st'>"Incluye personas que no proporcionaron información sociodemográfica.\nTotal de observaciones = 5,168"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-15-1.png" width="624" /></p>
+</div>
+<p>Aquí ya no pude poner el eje “y” como me hubiera gustado, pero la idea es muliplicar la leyenda por 100 para convertirlo en porcentaje.</p>
+<p>Podemos darnos cuenta que poniendo como límite el 100 pierde todo el impacto la gráfica. Por lo que dejarla acotada hasta el 40% nos da una mejor visión para comparar entre categorías. Jugar con las gráficas siempre nos da perspectiva.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sexo</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 3715</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sexo</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>sexo</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>sexo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>sexo</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>      sexo     
+ Hombres:2637  
+ Mujeres:1078  </code></pre>
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>sexo</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>cont <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>sexo</span>, <span class='va'>year</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>tsex <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>cont</span>, na.rm <span class='op'>=</span> <span class='cn'>T</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>sexo</span>, <span class='va'>year</span>, <span class='va'>clasificacion</span>, <span class='va'>tsex</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>tclas <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>porc <span class='op'>=</span> <span class='va'>tclas</span><span class='op'>/</span><span class='va'>tsex</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>sexo</span>, y <span class='op'>=</span> <span class='va'>porc</span>, fill <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>position <span class='op'>=</span> <span class='st'>"dodge"</span>, stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_fill_manual</a></span><span class='op'>(</span>values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_continuous.html'>scale_y_continuous</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'><a href='https://scales.r-lib.org//reference/label_percent.html'>percent_format</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_grid.html'>facet_grid</a></span><span class='op'>(</span><span class='va'>.</span> <span class='op'>~</span> <span class='va'>year</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Solicitudes por tema y sexo"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"Dividido por año"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span>, fill <span class='op'>=</span> <span class='st'>"Clasificación"</span>, 
+       caption <span class='op'>=</span> <span class='st'>"Solo se consideran solicitudes con información sobre el sexo de la persona solicitante\nTotal de observaciones = 3,715"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-16-1.png" width="624" /></p>
+</div>
+<p>Algo que me parece fundamental es que solo el 71.9% de las solicitudes pusieron información sobre el sexo de la persona solicitante. Y de estas solicitudes, el 70.98% fueron realizadas por personas que se identifican como hombres.</p>
+<p>Por último, vamos a ver el comportamiento de las solicitudes por mes de los años en cuestión.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    mes <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>fecha_presentacion</span><span class='op'>)</span>
+    <span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>mes</span>, <span class='va'>clasificacion</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2017</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>mes</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Clasificación"</span>,
+                     values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>labels<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Septiembre"</span>, <span class='st'>"Octubre"</span>, <span class='st'>"Noviembre"</span>, <span class='st'>"Diciembre"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total de solicitudes por mes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"2017"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-17-1.png" width="624" /></p>
+</div>
+<p>De esta gráfica lo más interesante es que en septiembre casi no hay solicitudes registradas, lo cual es bastante obvio porque estabaos en medio de una emergencia. Además, en todas estas gráficas utilizo números absolutos. El mes con más registros es octubre de 2017. En los años siguientes el pico nunca es tan alto.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    mes <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>fecha_presentacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>mes</span>, <span class='va'>clasificacion</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2018</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>mes</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Clasificación"</span>,
+                     values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>labels<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Enero"</span>, <span class='st'>"Febrero"</span>, <span class='st'>"Marzo"</span>, <span class='st'>"Abril"</span>, <span class='st'>"Mayo"</span>, <span class='st'>"Junio"</span>, 
+                             <span class='st'>"Julio"</span>, <span class='st'>"Agosto"</span>, <span class='st'>"Septiembre"</span>, <span class='st'>"Octubre"</span>, <span class='st'>"Noviembre"</span>, <span class='st'>"Diciembre"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total de solicitudes por mes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"2018"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-18-1.png" width="624" /></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>
+    mes <span class='op'>=</span> <span class='fu'><a href='http://lubridate.tidyverse.org/reference/month.html'>month</a></span><span class='op'>(</span><span class='va'>fecha_presentacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>year</span>, <span class='va'>mes</span>, <span class='va'>clasificacion</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>total <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>2019</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>mes</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>total</span>, group <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_path.html'>geom_line</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>clasificacion</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_manual.html'>scale_color_manual</a></span><span class='op'>(</span>name <span class='op'>=</span> <span class='st'>"Clasificación"</span>,
+                     values <span class='op'>=</span> <span class='va'>colores</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>labels<span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Enero"</span>, <span class='st'>"Febrero"</span>, <span class='st'>"Marzo"</span>, <span class='st'>"Abril"</span>, <span class='st'>"Mayo"</span>, <span class='st'>"Junio"</span>, 
+                             <span class='st'>"Julio"</span>, <span class='st'>"Agosto"</span>, <span class='st'>"Septiembre"</span>, <span class='st'>"Octubre"</span>, <span class='st'>"Noviembre"</span>, <span class='st'>"Diciembre"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Total de solicitudes por mes"</span>,
+       subtitle <span class='op'>=</span> <span class='st'>"2019"</span>,
+       x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_classic</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<p><img src="a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-19-1.png" width="624" /></p>
+</div>
+<p>Con estas graficas podemos empezar a plantear preguntas más interesantes. Además, es un esfuerzo institucional. Al igual que todos los datos, necesitamos más contexto para poder realizar preguntas más interesantes. Hay más categorías en estas bases de datos, como ocupación, días hábiles en los que se dió respuesta, número de servidores públicos involucrados, etc. En lo que aprendo mejor <em>text mining</em> una primera aproximación es ver estas gráficas.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

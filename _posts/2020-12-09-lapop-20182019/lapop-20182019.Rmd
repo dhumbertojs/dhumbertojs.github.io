@@ -20,7 +20,7 @@ Ya de paso, descargamos el cuestionario y el *codebook*
 
 ## Presentación
 
-La presenteación la pueden revisar [aquí](https://www.vanderbilt.edu/lapop/mexico/AB2018-19_Mexico_RRR_Presentation_W_09.25.19.pdf).
+La presentación la pueden revisar [aquí](https://www.vanderbilt.edu/lapop/mexico/AB2018-19_Mexico_RRR_Presentation_W_09.25.19.pdf).
 
 A partir de esta presentación, voy a replicar las gráficas de la sección **2.3 Participación política**. Esto para ilustrar como utilizar estos datos, otras gráficas más interesantes requieren información del resto de ejercicios en México.
 
@@ -28,7 +28,7 @@ A partir de esta presentación, voy a replicar las gráficas de la sección **2.
 
 En esta ocasión utilizaré nuevos paquetes. La función para instalar un paquete es install.packages("nombre-del-paquete"). En este caso install.packages("readstata13") y install.packages("treemap")
 
-```{r setup}
+```{r echo=T, setup}
 library(readstata13)
 library(dplyr)
 library(treemap)
@@ -36,7 +36,7 @@ library(treemap)
 
 Cuando descarguen sus datos, les recomiendo que tengan una carpeta organizada para este propósito. Es mejor tener ordenado todo y poder trabajar de manera más eficaz. Yo personalmente recomiendo trabajar con los directorios (las carpetas donde están sus datos o donde van a exportar sus resultados) estén como un objeto:
 
-```{r Directorios}
+```{r echo=T, Directorios}
 input <- "/Users/dhjs/Documents/projects/LAPOP"
 #Esta es la carpeta de los datos
 
@@ -48,15 +48,9 @@ output <- paste(input, "graficas", sep = "/")
 output
 ```
 
-Si usas windows, deberás copiar esto de la barra de direcciones: 
+### En la versión original había  unos screenshots  donde explicaba como, denme chance para entender como ponerlas de nuevo
 
-![](/post/2020-05-06-lapop-2018-2019_files/2020-05-07 (2).png)
-
-Si usan mac, cuando estén en su carpeta con los datos deberán apretar cmd+i, esperar que se despliegue la pestaña de información y copiar lo que viene en la imágen:
-
-![](/post/2020-05-06-lapop-2018-2019_files/Copy-the-folder-path.png)
-
-```{r LAPOP, warning=F}
+```{r LAPOP, echo=T, warning=F}
 list.files(input)
 
 data <- read.dta13(paste(input, "Mexico LAPOP AmericasBarometer 2019 v1.0_W.dta", sep = "/"))
@@ -64,7 +58,7 @@ data <- read.dta13(paste(input, "Mexico LAPOP AmericasBarometer 2019 v1.0_W.dta"
 
 Si exploran los datos con *head(data)* o *summary(data)* verán un montón de etiquetas y preguntas y datos. Por eso es necesario revisar el cuestionario para saber que pregunta usar. 
 
-```{r}
+```{r echo=T}
 levels(data$pol1)
 summary(data$pol1)
 ```
@@ -72,7 +66,7 @@ summary(data$pol1)
 La gráfica sólo contempla las respuestas mucho, algo, poco y nada. Por lo tanto hay que quitar lo que dice NA.
 Un NA es un valor no existente, es decir que no recolectó o que no existe la información. En ocasiones este tipo de información es importante.
 
-```{r}
+```{r echo=T}
 data %>% 
   filter(!is.na(pol1)) %>% 
   group_by(pol1) %>% 
@@ -92,7 +86,7 @@ Luego agrupamos por la pregunta que nos interesa *pol1*, contamos el número de 
 
 Y en esta ocasión aproveché para hacer todo en un *chunk* de código, el cálculo y la gráfica. Como no me parece útil una gráfica de pastel (porque a veces no puedes ver bien valores muy pequeños); les presento esta alternativa llamada **tremap**. Es como una gráfica de pastel, pero cuadrada. 
 
-```{r}
+```{r echo=T}
 data %>% 
   filter(!is.na(vb1)) %>% 
   group_by(vb1) %>% 
@@ -106,7 +100,7 @@ data %>%
           title = "Registrada para votar")
 ```
 
-```{r}
+```{r echo=T}
 data %>% 
   filter(!is.na(vb10)) %>% 
   group_by(vb10) %>% 
@@ -120,7 +114,7 @@ data %>%
           title = "Simpatiza con algún partido político")
 ```
 
-```{r}
+```{r echo=T}
 data %>% 
   filter(!is.na(vb20)) %>% 
   group_by(vb20) %>% 

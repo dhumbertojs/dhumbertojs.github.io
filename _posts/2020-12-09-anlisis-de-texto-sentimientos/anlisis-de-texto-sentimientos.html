@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Análisis de texto: sentimientos</title>
+  
+  <meta property="description" itemprop="description" content="Primer acercamiento al análisis de sentimientos/emociones."/>
+  
+  
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-11-14"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-11-14"/>
+  <meta name="article:author" content="David H. Jiménez"/>
+  
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Análisis de texto: sentimientos"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Primer acercamiento al análisis de sentimientos/emociones."/>
+  <meta property="og:locale" content="en_US"/>
+  
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Análisis de texto: sentimientos"/>
+  <meta property="twitter:description" content="Primer acercamiento al análisis de sentimientos/emociones."/>
+  
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Análisis de texto: sentimientos"]},{"type":"character","attributes":{},"value":["Primer acercamiento al análisis de sentimientos/emociones.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["David H. Jiménez"]}]}]},{"type":"character","attributes":{},"value":["11-14-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["anlisis-de-texto-sentimientos_files/anchor-4.2.2/anchor.min.js","anlisis-de-texto-sentimientos_files/bowser-1.9.3/bowser.min.js","anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/css/crosstalk.css","anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/js/crosstalk.js","anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/js/crosstalk.js.map","anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/js/crosstalk.min.js","anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/js/crosstalk.min.js.map","anlisis-de-texto-sentimientos_files/distill-2.2.21/template.v2.js","anlisis-de-texto-sentimientos_files/figure-html5/unnamed-chunk-6-1.png","anlisis-de-texto-sentimientos_files/htmlwidgets-1.5.2/htmlwidgets.js","anlisis-de-texto-sentimientos_files/jquery-1.11.3/jquery-AUTHORS.txt","anlisis-de-texto-sentimientos_files/jquery-1.11.3/jquery.js","anlisis-de-texto-sentimientos_files/jquery-1.11.3/jquery.min.js","anlisis-de-texto-sentimientos_files/jquery-1.11.3/jquery.min.map","anlisis-de-texto-sentimientos_files/plotly-binding-4.9.2.1/plotly.js","anlisis-de-texto-sentimientos_files/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css","anlisis-de-texto-sentimientos_files/plotly-main-1.52.2/plotly-latest.min.js","anlisis-de-texto-sentimientos_files/typedarray-0.1/typedarray.min.js","anlisis-de-texto-sentimientos_files/webcomponents-2.0.0/webcomponents.js","anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/hover.js","anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/wordcloud.css","anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/wordcloud2-all.js","anlisis-de-texto-sentimientos_files/wordcloud2-binding-0.2.1/wordcloud2.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+  
+  <style type="text/css">
+  
+  body {
+    background-color: white;
+  }
+  
+  .pandoc-table {
+    width: 100%;
+  }
+  
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+  
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+  
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+  
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+  
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+  
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+  
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+  
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+  
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+  
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+  
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+  
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+  
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .shaded .shaded-content {
+    background: white;
+  }
+  
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+  
+  .hidden {
+    display: none !important;
+  }
+  
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+  
+  d-appendix {
+    padding-top: 30px;
+  }
+  
+  d-article>p>img {
+    width: 100%;
+  }
+  
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+  
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+  
+  /* Tweak code blocks */
+  
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+  
+  d-article div.sourceCode {
+    background-color: white;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+  
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  d-article pre a {
+    border-bottom: none;
+  }
+  
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+  
+  @media(min-width: 768px) {
+  
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+  
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+  
+  d-article pre {
+    font-size: 14px;
+  }
+  
+  }
+  
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  /* CSS for d-contents */
+  
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+  
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+  
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+  
+  .d-contents li {
+    list-style-type: none
+  }
+  
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+  
+  .d-contents ul {
+    padding-left: 1em
+  }
+  
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+  
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+  
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+  
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+  
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+  
+  
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+  
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+  
+  
+  /* Figure */
+  
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+  
+  .figure img {
+    width: 100%;
+  }
+  
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+  
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+  
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+  
+  /* Citations */
+  
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+  
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+  
+  
+  /* Tweak 1000px media break to show more text */
+  
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+  
+    .grid {
+      grid-column-gap: 16px;
+    }
+  
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+  
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+  
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+  
+  
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+  
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Include appendix styles here so they can be overridden */
+  
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+  
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+  
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+  
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+  
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+  
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+  
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  d-appendix > * {
+    grid-column: text;
+  }
+  
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+  
+  /* Include footnote styles here so they can be overridden */
+  
+  d-footnote-list {
+    contain: layout style;
+  }
+  
+  d-footnote-list > * {
+    grid-column: text;
+  }
+  
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+  
+  
+  
+  /* Anchor.js */
+  
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+  
+  /* Social footer */
+  
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+  
+  .disqus-comments {
+    margin-right: 30px;
+  }
+  
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+  
+  #disqus_thread {
+    margin-top: 30px;
+  }
+  
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+  
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+  
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+  
+  
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+  
+  
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+  
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+  
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+  
+  /* Styles for posts lists (not auto-injected) */
+  
+  
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+  
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+  
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+  
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+  
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+  
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+  
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+  
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+  
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+  
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+  
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+  
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+  
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+  
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+  
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  
+  .posts-list img {
+    opacity: 1;
+  }
+  
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+  
+  .posts-more {
+    clear: both;
+  }
+  
+  
+  .posts-sidebar {
+    font-size: 16px;
+  }
+  
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+  
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+  
+  .categories li>a {
+    border-bottom: none;
+  }
+  
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+  
+  .categories .active {
+    font-weight: 600;
+  }
+  
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+  
+  
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+  
+  
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+  
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+  
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+  
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+  
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+  
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+  
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+  
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+  
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+  
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+  
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+  
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+  
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+  
+  
+  
+  </style>
+  
+  <script type="application/javascript">
+  
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+  
+  // show body when load is complete
+  function on_load_complete() {
+  
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+  
+  
+    // set body to visible
+    document.body.style.visibility = 'visible';
+  
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+  
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+  
+  function init_distill() {
+  
+    init_common();
+  
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+  
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+  
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+  
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+  
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+  
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+  
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+  
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+  
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+  
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+  
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+  
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+  
+      // capture layout
+      var layout = $(this).attr('data-layout');
+  
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+  
+  
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+  
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+  
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+  
+    // load distill framework
+    load_distill_framework();
+  
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+  
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+  
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+  
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+  
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+  
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+  
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+  
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+  
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+  
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+  
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+  
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+  
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+  
+      // clear polling timer
+      clearInterval(tid);
+  
+      // show body now that everything is ready
+      on_load_complete();
+    }
+  
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+  
+  }
+  
+  function init_downlevel() {
+  
+    init_common();
+  
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+  
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+  
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+  
+    // remove toc
+    $('.d-contents').remove();
+  
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+  
+  
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+  
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+  
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+  
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+  
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+  
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+  
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+  
+    $('body').addClass('downlevel');
+  
+    on_load_complete();
+  }
+  
+  
+  function init_common() {
+  
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+  
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+  
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+  
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+  
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+  
+      }
+    });
+  
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+  
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+  
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+  
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+  
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+  
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+  
+  </script>
+  
+  <!--/radix_placeholder_distill-->
+  <script src="anlisis-de-texto-sentimientos_files/htmlwidgets-1.5.2/htmlwidgets.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/plotly-binding-4.9.2.1/plotly.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/typedarray-0.1/typedarray.min.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/jquery-1.11.3/jquery.min.js"></script>
+  <link href="anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/css/crosstalk.css" rel="stylesheet" />
+  <script src="anlisis-de-texto-sentimientos_files/crosstalk-1.1.0.1/js/crosstalk.min.js"></script>
+  <link href="anlisis-de-texto-sentimientos_files/plotly-htmlwidgets-css-1.52.2/plotly-htmlwidgets.css" rel="stylesheet" />
+  <script src="anlisis-de-texto-sentimientos_files/plotly-main-1.52.2/plotly-latest.min.js"></script>
+  <link href="anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/wordcloud.css" rel="stylesheet" />
+  <script src="anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/wordcloud2-all.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/wordcloud2-0.0.1/hover.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/wordcloud2-binding-0.2.1/wordcloud2.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="anlisis-de-texto-sentimientos_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Análisis de texto: sentimientos","description":"Primer acercamiento al análisis de sentimientos/emociones.","authors":[{"author":"David H. Jiménez","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-11-14T00:00:00.000-06:00","citationText":"Jiménez, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Análisis de texto: sentimientos</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>Primer acercamiento al análisis de sentimientos/emociones.</p></p>
+</div>
+
+<div class="d-byline">
+  David H. Jiménez  
+  
+<br/>11-14-2020
+</div>
+
+<div class="d-article">
+<h1 id="sentimient-analysis">Sentimient analysis</h1>
+<p>Después del primer intento de analizar texto, en español, sentí que todavía se podían hacer más cosas. Además, he descubierto que aquí puedo meter cosas interactivas. Ahora quiero seguir experimentando con ese tipo de cosas, y ampliar lo de análisis de texto.</p>
+<p>Todas las ideas de análisis de texto vienen del increíble texto de <a href="https://twitter.com/juliasilge?lang=es">Julia Silge</a>: <a href="https://www.tidytextmining.com/"><em>Text Mining with R</em></a>. Hay un montón de material para investigar de como hacer análisis de texto en inglés. Análisis en español replicables también hay pero no todos son tan amigables (que es algo que yo siempre intento). Voy a utilizar el mismo conjuto de datos de la entrada anterior y que pueden descargar <a href="https://drive.google.com/file/d/18xlleEAl2SLeUIsKJmBcN6ImLxChvJqa/view?usp=sharing">aquí</a>).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>tidyverse</span>, <span class='va'>tidytext</span>, <span class='va'>tm</span>, <span class='va'>wordcloud2</span>, <span class='va'>plotly</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Son los mismos <em>paquetes</em> de la vez pasada más una sorpresa: <a href="https://plotly.com/r/"><em>plotly</em></a>, paquete que nos permite que al pasar el cursor sobre la gráfica nos dé información. Sé que se puede hacer más, pero lo iré explorando de a poco.</p>
+<p>El análisis de sentimiento es, de manera muy simplificada y sencilla, evaluar la intención de una palabra para ver si se dice con un “tono” positivo o ngativo, que emoción expresa y como se relacionan. Yo sé que suena muy sencillo, pero al mismo tiempo requirió mucho trabajo e investigaciones llegar a este punto.</p>
+<p>El inicio es igual. Conseguimos datos de texto, los ordenamos (<em>tidy</em>), luego separamos las palabras (<em>unnest tokens</em>), limpiamos la nueva base de datos (quitar <em>stop words</em>) y a partir de este punto podemos hacer análisis más interesantes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>inp</span> <span class='op'>&lt;-</span> <span class='st'>"/Users/dhjs/Documents/projects/data_blog"</span>
+
+<span class='va'>data</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span><span class='op'>(</span><span class='va'>inp</span>, <span class='st'>"datos_sismo.csv"</span>, sep <span class='op'>=</span><span class='st'>"/"</span><span class='op'>)</span>, 
+                 stringsAsFactors <span class='op'>=</span> <span class='cn'>F</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Sujeto</span>, <span class='va'>Informacion_objeto</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>
+    Informacion_objeto <span class='op'>=</span> <span class='fu'>str_remove_all</span><span class='op'>(</span><span class='va'>Informacion_objeto</span>, <span class='st'>"[[:digit:]]"</span><span class='op'>)</span>,
+    Informacion_objeto <span class='op'>=</span> <span class='fu'>str_remove_all</span><span class='op'>(</span><span class='va'>Informacion_objeto</span>, <span class='st'>"[[:punct:]]"</span><span class='op'>)</span>,
+    Informacion_objeto <span class='op'>=</span> <span class='fu'>str_squish</span><span class='op'>(</span><span class='va'>Informacion_objeto</span><span class='op'>)</span>
+  <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>prim</span> <span class='op'>&lt;-</span> <span class='va'>data</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>Palabra</span>, <span class='va'>Informacion_objeto</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='va'>Palabra</span> <span class='op'>%in%</span> <span class='fu'>stopwords</span><span class='op'>(</span><span class='st'>"es"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>filtro <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nchar.html'>nchar</a></span><span class='op'>(</span><span class='va'>Palabra</span><span class='op'>)</span><span class='op'>&lt;</span> <span class='fl'>4</span>, <span class='fl'>1</span>, <span class='fl'>0</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>filtro</span> <span class='op'>==</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>select</span><span class='op'>(</span><span class='op'>-</span><span class='va'>filtro</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>count</span><span class='op'>(</span><span class='va'>Palabra</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>arrange</span><span class='op'>(</span><span class='op'>-</span><span class='va'>n</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Ahora, vamos a cargar el léxico “afinn”. Esto lo encontré en este blog de <a href="https://rpubs.com/jboscomendoza/analisis_sentimientos_lexico_afinn">Juan Bosco Mendoza</a> (máximo respeto). Dejemos que él nos explique qué es este lexicon.</p>
+<blockquote>
+<p>Para este análisis de sentimiento usaremos el léxico Afinn. Este es un conjunto de palabras, puntuadas de acuerdo a qué tan positivamente o negativamente son percibidas. Las palabras que son percibidas de manera positiva tienen puntuaciones de -4 a -1; y las positivas de 1 a 4.</p>
+<p>La versión que usaremos es una traducción automática, de inglés a español, de la versión del léxico presente en el conjunto de datos sentiments de tidytext, con algunas correcciones manuales. Por supuesto, esto quiere decir que este léxico tendrá algunos defectos, pero será suficiente para nuestro análisis.</p>
+<p>Descargamos este léxico de la siguiente dirección:</p>
+<ul>
+<li><a href="https://raw.githubusercontent.com/jboscomendoza/rpubs/master/sentimientos_afinn/lexico_afinn.en.es.csv" class="uri">https://raw.githubusercontent.com/jboscomendoza/rpubs/master/sentimientos_afinn/lexico_afinn.en.es.csv</a></li>
+</ul>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>afinn</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/jboscomendoza/rpubs/master/sentimientos_afinn/lexico_afinn.en.es.csv"</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p>Como es un link de un archivo csv podemos cargarlo sin descargarlo en R :D</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>paf</span> <span class='op'>&lt;-</span> <span class='fu'>inner_join</span><span class='op'>(</span><span class='va'>prim</span>, <span class='va'>afinn</span>, by <span class='op'>=</span> <span class='st'>"Palabra"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>mutate</span><span class='op'>(</span>tipo <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Puntuacion</span> <span class='op'>&gt;</span> <span class='fl'>0</span>, <span class='st'>"Positiva"</span>, <span class='st'>"Negativa"</span><span class='op'>)</span><span class='op'>)</span>
+
+<span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>prim</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 8520    2</code></pre>
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>paf</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 329   5</code></pre>
+</div>
+<p>Para el tema de sentimientos, unimos las bases de datos <strong>solo</strong> con las observaciones que están en ambas. Por esa razón, podemos observar que en el análisis original hay 8,520 palabras, mientras que ya unidas solo hay 329 palabras.</p>
+<h2 id="gráficas">Gráficas</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>prim</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>top_n</span><span class='op'>(</span><span class='fl'>50</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>Palabra</span>, <span class='va'>n</span><span class='op'>)</span>, y <span class='op'>=</span>  <span class='va'>n</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_bar</span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span> 
+  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>"Frecuencia"</span>, title <span class='op'>=</span> <span class='st'>"Palabras!!"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="anlisis-de-texto-sentimientos_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>Que bonita gráfica, no? Es lo que ya sabemos hacer en ggplot: datos, variables a gráficar (<strong>aes</strong>), el tipo de gráfica que queremos (<strong>geom</strong>), la giramos (<strong>coord_flip</strong>) y le ponemos etiquetas (<strong>labs</strong>). Esto funciona bien para publicaciones, pero quiero intentar hacer gráficas interactivas</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>p50</span> <span class='op'>&lt;-</span> <span class='va'>prim</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'>top_n</span><span class='op'>(</span><span class='fl'>50</span><span class='op'>)</span>
+
+<span class='fu'>plot_ly</span><span class='op'>(</span><span class='va'>p50</span>, y <span class='op'>=</span> <span class='op'>~</span><span class='va'>Palabra</span>, x <span class='op'>=</span> <span class='op'>~</span><span class='va'>n</span>, type <span class='op'>=</span> <span class='st'>"bar"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/graphics/layout.html'>layout</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Palabras!!"</span>,
+         xaxis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>,
+         yaxis <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-89493f1322108dac1713" style="width:624px;height:384px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-89493f1322108dac1713">{"x":{"visdat":{"2aac38a3bf9":["function () ","plotlyVisDat"]},"cur_data":"2aac38a3bf9","attrs":{"2aac38a3bf9":{"y":{},"x":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"Palabras!!","xaxis":{"domain":[0,1],"automargin":true,"title":""},"yaxis":{"domain":[0,1],"automargin":true,"title":"","type":"category","categoryorder":"array","categoryarray":["acciones","afectadas","cada","cdmx","centro","ciudad","civil","colonia","construcción","copia","cuántos","damnificados","daños","delegación","dictamen","edificio","edificios","favor","fecha","fondo","gobierno","histórico","información","informe","infraestructura","inmueble","inmuebles","méxico","motivo","nombre","número","obra","personas","porcentaje","presupuesto","programas","protección","pública","reconstrucción","recursos","seguridad","septiembre","sismo","sismos","solicito","solicitud","tipo","total","ubicado","vivienda"]},"hovermode":"closest","showlegend":false},"source":"A","config":{"showSendToCloud":false},"data":[{"y":["septiembre","sismo","ciudad","méxico","solicito","delegación","reconstrucción","número","información","inmuebles","centro","cada","histórico","gobierno","fecha","recursos","personas","nombre","construcción","colonia","cuántos","inmueble","motivo","civil","informe","edificios","protección","cdmx","edificio","ubicado","fondo","total","presupuesto","acciones","tipo","sismos","damnificados","solicitud","pública","seguridad","afectadas","copia","porcentaje","favor","infraestructura","programas","vivienda","obra","daños","dictamen"],"x":[9722,9015,8114,7993,6594,4629,4366,4329,3873,3357,3141,2841,2816,2777,2753,2625,2522,2363,2312,2168,2141,2024,1945,1815,1782,1726,1714,1667,1630,1580,1553,1553,1540,1494,1466,1434,1410,1371,1361,1353,1350,1345,1329,1317,1304,1303,1273,1270,1251,1229],"type":"bar","orientation":"h","marker":{"color":"rgba(31,119,180,1)","line":{"color":"rgba(31,119,180,1)"}},"error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>Como mencioné, sigo aprendiendo a usar <strong>plotly</strong> si saben de otro lugar para aprender avísenme. Pero, regresemos al análisis de sentimientos.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>sent</span> <span class='op'>&lt;-</span> <span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>paf</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span><span class='op'>(</span><span class='va'>Palabra</span>, <span class='va'>n</span><span class='op'>)</span>, y <span class='op'>=</span> <span class='va'>n</span>, fill <span class='op'>=</span> <span class='va'>tipo</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>geom_bar</span><span class='op'>(</span>stat <span class='op'>=</span> <span class='st'>"identity"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>coord_flip</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>labs</span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Sentimientos"</span>, x <span class='op'>=</span> <span class='st'>""</span>, y <span class='op'>=</span> <span class='st'>""</span><span class='op'>)</span>
+
+<span class='fu'>ggplotly</span><span class='op'>(</span><span class='va'>sent</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div id="htmlwidget-7ad544985cf848e22ae2" style="width:624px;height:384px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7ad544985cf848e22ae2">{"x":{"data":[{"orientation":"h","width":[0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.900000000000006,0.900000000000006,0.900000000000006,0.899999999999991,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.9,0.9,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.900000000000002,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006],"base":[0,0,0,0,0,670,0,561,0,0,0,0,0,0,170,0,0,0,113,226,0,100,200,0,0,0,56,0,0,0,0,0,0,0,0,37,0,0,0,0,0,0,0,0,0,0,0,0,21,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,5,0,5,0,5,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"x":[1251,1194,1095,794,670,670,566,561,477,251,233,190,172,170,170,153,143,113,113,113,100,100,100,76,64,56,56,54,53,50,47,42,41,40,37,37,36,31,31,30,29,25,25,23,22,22,22,21,21,21,21,21,20,20,19,18,15,15,15,15,14,13,13,13,13,12,11,11,11,10,10,10,10,10,10,10,9,9,9,8,8,7,7,7,7,7,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,4,4,4,4,4,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[288,287,286,283,281,281,280,279,278,272,268,266,264,263,263,260,259,257,257,257,253,253,253,245,243,240,240,239,237,236,235,234,233,232,227,227,226,221,222,220,219,212,213,209,206,207,208,201,201,202,203,205,198,199,196,195,188,189,190,191,184,177,178,179,181,175,166,167,170,157,158,159,160,161,162,164,153,154,155,147,152,139,140,141,142,143,123,124,127,128,129,130,132,132,134,110,113,115,115,116,116,118,118,101,105,106,107,108,84,88,88,94,96,57,59,60,61,62,63,63,64,69,70,71,72,74,78,80,82,1,3,6,6,7,7,8,9,10,15,16,17,17,18,19,20,21,21,22,24,25,26,27,32,34,35,36,38,43,44,46,47,48,49,50,54,55,56],"text":["reorder(Palabra, n): daños<br />n: 1251<br />tipo: Negativa","reorder(Palabra, n): riesgo<br />n: 1194<br />tipo: Negativa","reorder(Palabra, n): pasado<br />n: 1095<br />tipo: Negativa","reorder(Palabra, n): emergencia<br />n:  794<br />tipo: Negativa","reorder(Palabra, n): daño<br />n:  670<br />tipo: Negativa","reorder(Palabra, n): daño<br />n:  670<br />tipo: Negativa","reorder(Palabra, n): desastres<br />n:  566<br />tipo: Negativa","reorder(Palabra, n): rescate<br />n:  561<br />tipo: Negativa","reorder(Palabra, n): alerta<br />n:  477<br />tipo: Negativa","reorder(Palabra, n): afectado<br />n:  251<br />tipo: Negativa","reorder(Palabra, n): tiempo<br />n:  233<br />tipo: Negativa","reorder(Palabra, n): desastre<br />n:  190<br />tipo: Negativa","reorder(Palabra, n): puesto<br />n:  172<br />tipo: Negativa","reorder(Palabra, n): colapso<br />n:  170<br />tipo: Negativa","reorder(Palabra, n): colapso<br />n:  170<br />tipo: Negativa","reorder(Palabra, n): parcial<br />n:  153<br />tipo: Negativa","reorder(Palabra, n): riesgos<br />n:  143<br />tipo: Negativa","reorder(Palabra, n): peligro<br />n:  113<br />tipo: Negativa","reorder(Palabra, n): peligro<br />n:  113<br />tipo: Negativa","reorder(Palabra, n): peligro<br />n:  113<br />tipo: Negativa","reorder(Palabra, n): evitar<br />n:  100<br />tipo: Negativa","reorder(Palabra, n): evitar<br />n:  100<br />tipo: Negativa","reorder(Palabra, n): evitar<br />n:  100<br />tipo: Negativa","reorder(Palabra, n): denuncia<br />n:   76<br />tipo: Negativa","reorder(Palabra, n): temblor<br />n:   64<br />tipo: Negativa","reorder(Palabra, n): víctimas<br />n:   56<br />tipo: Negativa","reorder(Palabra, n): víctimas<br />n:   56<br />tipo: Negativa","reorder(Palabra, n): corte<br />n:   54<br />tipo: Negativa","reorder(Palabra, n): deuda<br />n:   53<br />tipo: Negativa","reorder(Palabra, n): solo<br />n:   50<br />tipo: Negativa","reorder(Palabra, n): suspender<br />n:   47<br />tipo: Negativa","reorder(Palabra, n): demanda<br />n:   42<br />tipo: Negativa","reorder(Palabra, n): cubrir<br />n:   41<br />tipo: Negativa","reorder(Palabra, n): dudas<br />n:   40<br />tipo: Negativa","reorder(Palabra, n): defecto<br />n:   37<br />tipo: Negativa","reorder(Palabra, n): defecto<br />n:   37<br />tipo: Negativa","reorder(Palabra, n): incompetencia<br />n:   36<br />tipo: Negativa","reorder(Palabra, n): colapsado<br />n:   31<br />tipo: Negativa","reorder(Palabra, n): urgente<br />n:   31<br />tipo: Negativa","reorder(Palabra, n): limitado<br />n:   30<br />tipo: Negativa","reorder(Palabra, n): culpa<br />n:   29<br />tipo: Negativa","reorder(Palabra, n): paga<br />n:   25<br />tipo: Negativa","reorder(Palabra, n): restricción<br />n:   25<br />tipo: Negativa","reorder(Palabra, n): provocado<br />n:   23<br />tipo: Negativa","reorder(Palabra, n): cargos<br />n:   22<br />tipo: Negativa","reorder(Palabra, n): desperdicios<br />n:   22<br />tipo: Negativa","reorder(Palabra, n): indignación<br />n:   22<br />tipo: Negativa","reorder(Palabra, n): demandas<br />n:   21<br />tipo: Negativa","reorder(Palabra, n): demandas<br />n:   21<br />tipo: Negativa","reorder(Palabra, n): detención<br />n:   21<br />tipo: Negativa","reorder(Palabra, n): exclusión<br />n:   21<br />tipo: Negativa","reorder(Palabra, n): restringir<br />n:   21<br />tipo: Negativa","reorder(Palabra, n): perder<br />n:   20<br />tipo: Negativa","reorder(Palabra, n): perdió<br />n:   20<br />tipo: Negativa","reorder(Palabra, n): carga<br />n:   19<br />tipo: Negativa","reorder(Palabra, n): fuga<br />n:   18<br />tipo: Negativa","reorder(Palabra, n): negado<br />n:   15<br />tipo: Negativa","reorder(Palabra, n): niega<br />n:   15<br />tipo: Negativa","reorder(Palabra, n): problemas<br />n:   15<br />tipo: Negativa","reorder(Palabra, n): vulnerabilidad<br />n:   15<br />tipo: Negativa","reorder(Palabra, n): dejar<br />n:   14<br />tipo: Negativa","reorder(Palabra, n): accidentes<br />n:   13<br />tipo: Negativa","reorder(Palabra, n): acusa<br />n:   13<br />tipo: Negativa","reorder(Palabra, n): cargas<br />n:   13<br />tipo: Negativa","reorder(Palabra, n): grave<br />n:   13<br />tipo: Negativa","reorder(Palabra, n): perdido<br />n:   12<br />tipo: Negativa","reorder(Palabra, n): delito<br />n:   11<br />tipo: Negativa","reorder(Palabra, n): expuesto<br />n:   11<br />tipo: Negativa","reorder(Palabra, n): lento<br />n:   11<br />tipo: Negativa","reorder(Palabra, n): dañar<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): desalojo<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): exponer<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): impuesto<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): negativo<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): preocupación<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): restringido<br />n:   10<br />tipo: Negativa","reorder(Palabra, n): alarma<br />n:    9<br />tipo: Negativa","reorder(Palabra, n): destrucción<br />n:    9<br />tipo: Negativa","reorder(Palabra, n): duda<br />n:    9<br />tipo: Negativa","reorder(Palabra, n): desempleo<br />n:    8<br />tipo: Negativa","reorder(Palabra, n): restos<br />n:    8<br />tipo: Negativa","reorder(Palabra, n): delitos<br />n:    7<br />tipo: Negativa","reorder(Palabra, n): estancado<br />n:    7<br />tipo: Negativa","reorder(Palabra, n): falla<br />n:    7<br />tipo: Negativa","reorder(Palabra, n): ruptura<br />n:    7<br />tipo: Negativa","reorder(Palabra, n): vestíbulo<br />n:    7<br />tipo: Negativa","reorder(Palabra, n): bruto<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): caos<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): negligencia<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): obligatorio<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): paradas<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): pérdida<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): problema<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): problema<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): vencido<br />n:    6<br />tipo: Negativa","reorder(Palabra, n): accidental<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): contencioso<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): manipulación<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): manipulación<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): rechazado<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): rechazado<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): ruina<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): ruina<br />n:    5<br />tipo: Negativa","reorder(Palabra, n): erupción<br />n:    4<br />tipo: Negativa","reorder(Palabra, n): prohibición<br />n:    4<br />tipo: Negativa","reorder(Palabra, n): prohibido<br />n:    4<br />tipo: Negativa","reorder(Palabra, n): residuos<br />n:    4<br />tipo: Negativa","reorder(Palabra, n): sobrecarga<br />n:    4<br />tipo: Negativa","reorder(Palabra, n): conflicto<br />n:    3<br />tipo: Negativa","reorder(Palabra, n): errores<br />n:    3<br />tipo: Negativa","reorder(Palabra, n): errores<br />n:    3<br />tipo: Negativa","reorder(Palabra, n): refugios<br />n:    3<br />tipo: Negativa","reorder(Palabra, n): suficiente<br />n:    3<br />tipo: Negativa","reorder(Palabra, n): accidente<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): acusaciones<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): arreglado<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): barrera<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): destruyendo<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): engaño<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): engaño<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): esconder<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): ilegal<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): lesionado<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): límites<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): matar<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): muerte<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): puto<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): tragedia<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): violación<br />n:    2<br />tipo: Negativa","reorder(Palabra, n): abandonado<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): ansiedad<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): caído<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): caído<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): cancelado<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): cancelado<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): cancelar<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): ciego<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): cobrar<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): crítico<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): denunciar<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): dudoso<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): dudoso<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): enfermedad<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): enfermedades<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): error<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): escasez<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): escasez<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): esperar<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): estragos<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): exposición<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): fatiga<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): fraudulento<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): impedido<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): inconveniente<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): infantil<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): inferior<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): insomnio<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): parcialidad<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): perturbador<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): propaganda<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): protesta<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): recortes<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): rompió<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): sentencia<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): sufrir<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): viola<br />n:    1<br />tipo: Negativa","reorder(Palabra, n): violencia<br />n:    1<br />tipo: Negativa"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Negativa","legendgroup":"Negativa","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":[0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.899999999999977,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.899999999999977,0.899999999999977,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.9,0.9,0.9,0.9,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.899999999999999,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006,0.900000000000006],"base":[0,0,0,1017,2034,0,0,0,0,467,0,0,0,0,0,0,0,0,0,187,0,166,0,0,0,0,100,0,0,0,0,0,89,0,88,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,28,56,0,0,0,25,0,0,0,0,0,0,18,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0],"x":[1466,1317,1017,1017,1017,886,711,561,467,467,411,317,271,268,249,240,236,224,187,187,166,166,155,128,109,100,100,100,94,94,91,89,89,88,88,81,77,65,62,59,54,40,39,38,37,35,32,32,28,28,28,28,28,27,25,25,24,24,21,21,20,18,18,16,16,15,15,14,14,13,13,12,12,11,11,11,11,11,10,10,10,9,8,8,8,8,8,8,8,7,7,7,7,6,6,6,6,6,6,5,5,5,5,5,5,5,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"y":[290,289,285,285,285,284,282,279,277,277,276,275,274,273,271,270,269,267,265,265,262,262,261,258,256,254,254,255,251,252,250,249,249,248,248,247,246,244,242,241,238,231,230,229,228,225,223,224,216,217,217,217,218,215,214,214,210,211,200,204,197,194,194,192,193,186,187,183,185,180,182,174,176,168,169,171,172,173,163,165,165,156,144,145,146,148,149,150,151,135,136,137,138,121,122,125,126,131,133,111,112,112,114,117,119,120,99,100,100,102,103,104,109,83,85,86,87,89,90,90,91,92,93,95,97,98,58,58,65,66,67,68,73,75,76,77,79,81,2,2,4,5,11,12,13,14,23,28,29,30,31,33,37,39,40,41,41,42,45,51,52,53],"text":["reorder(Palabra, n): tipo<br />n: 1466<br />tipo: Positiva","reorder(Palabra, n): favor<br />n: 1317<br />tipo: Positiva","reorder(Palabra, n): apoyo<br />n: 1017<br />tipo: Positiva","reorder(Palabra, n): apoyo<br />n: 1017<br />tipo: Positiva","reorder(Palabra, n): apoyo<br />n: 1017<br />tipo: Positiva","reorder(Palabra, n): responsable<br />n:  886<br />tipo: Positiva","reorder(Palabra, n): autoridad<br />n:  711<br />tipo: Positiva","reorder(Palabra, n): rescate<br />n:  561<br />tipo: Positiva","reorder(Palabra, n): ayuda<br />n:  467<br />tipo: Positiva","reorder(Palabra, n): ayuda<br />n:  467<br />tipo: Positiva","reorder(Palabra, n): acuerdo<br />n:  411<br />tipo: Positiva","reorder(Palabra, n): realizar<br />n:  317<br />tipo: Positiva","reorder(Palabra, n): sentido<br />n:  271<br />tipo: Positiva","reorder(Palabra, n): beneficio<br />n:  268<br />tipo: Positiva","reorder(Palabra, n): gracias<br />n:  249<br />tipo: Positiva","reorder(Palabra, n): obligado<br />n:  240<br />tipo: Positiva","reorder(Palabra, n): hermosa<br />n:  236<br />tipo: Positiva","reorder(Palabra, n): natural<br />n:  224<br />tipo: Positiva","reorder(Palabra, n): seguro<br />n:  187<br />tipo: Positiva","reorder(Palabra, n): seguro<br />n:  187<br />tipo: Positiva","reorder(Palabra, n): deseo<br />n:  166<br />tipo: Positiva","reorder(Palabra, n): deseo<br />n:  166<br />tipo: Positiva","reorder(Palabra, n): aprobado<br />n:  155<br />tipo: Positiva","reorder(Palabra, n): competente<br />n:  128<br />tipo: Positiva","reorder(Palabra, n): esperando<br />n:  109<br />tipo: Positiva","reorder(Palabra, n): mayor<br />n:  100<br />tipo: Positiva","reorder(Palabra, n): mayor<br />n:  100<br />tipo: Positiva","reorder(Palabra, n): restauración<br />n:  100<br />tipo: Positiva","reorder(Palabra, n): héroes<br />n:   94<br />tipo: Positiva","reorder(Palabra, n): saludo<br />n:   94<br />tipo: Positiva","reorder(Palabra, n): legal<br />n:   91<br />tipo: Positiva","reorder(Palabra, n): estimado<br />n:   89<br />tipo: Positiva","reorder(Palabra, n): estimado<br />n:   89<br />tipo: Positiva","reorder(Palabra, n): sobreviviente<br />n:   88<br />tipo: Positiva","reorder(Palabra, n): sobreviviente<br />n:   88<br />tipo: Positiva","reorder(Palabra, n): rescates<br />n:   81<br />tipo: Positiva","reorder(Palabra, n): fortalecimiento<br />n:   77<br />tipo: Positiva","reorder(Palabra, n): cumplir<br />n:   65<br />tipo: Positiva","reorder(Palabra, n): pagado<br />n:   62<br />tipo: Positiva","reorder(Palabra, n): mejor<br />n:   59<br />tipo: Positiva","reorder(Palabra, n): comprometido<br />n:   54<br />tipo: Positiva","reorder(Palabra, n): determinado<br />n:   40<br />tipo: Positiva","reorder(Palabra, n): sustancialmente<br />n:   39<br />tipo: Positiva","reorder(Palabra, n): bueno<br />n:   38<br />tipo: Positiva","reorder(Palabra, n): motivación<br />n:   37<br />tipo: Positiva","reorder(Palabra, n): saludos<br />n:   35<br />tipo: Positiva","reorder(Palabra, n): establecido<br />n:   32<br />tipo: Positiva","reorder(Palabra, n): legalmente<br />n:   32<br />tipo: Positiva","reorder(Palabra, n): celebrado<br />n:   28<br />tipo: Positiva","reorder(Palabra, n): resolver<br />n:   28<br />tipo: Positiva","reorder(Palabra, n): resolver<br />n:   28<br />tipo: Positiva","reorder(Palabra, n): resolver<br />n:   28<br />tipo: Positiva","reorder(Palabra, n): superior<br />n:   28<br />tipo: Positiva","reorder(Palabra, n): beneficios<br />n:   27<br />tipo: Positiva","reorder(Palabra, n): valor<br />n:   25<br />tipo: Positiva","reorder(Palabra, n): valor<br />n:   25<br />tipo: Positiva","reorder(Palabra, n): beneficiado<br />n:   24<br />tipo: Positiva","reorder(Palabra, n): integridad<br />n:   24<br />tipo: Positiva","reorder(Palabra, n): cuidado<br />n:   21<br />tipo: Positiva","reorder(Palabra, n): innovación<br />n:   21<br />tipo: Positiva","reorder(Palabra, n): asegurado<br />n:   20<br />tipo: Positiva","reorder(Palabra, n): aprobación<br />n:   18<br />tipo: Positiva","reorder(Palabra, n): aprobación<br />n:   18<br />tipo: Positiva","reorder(Palabra, n): adecuado<br />n:   16<br />tipo: Positiva","reorder(Palabra, n): facilitar<br />n:   16<br />tipo: Positiva","reorder(Palabra, n): justicia<br />n:   15<br />tipo: Positiva","reorder(Palabra, n): llegar<br />n:   15<br />tipo: Positiva","reorder(Palabra, n): asuntos<br />n:   14<br />tipo: Positiva","reorder(Palabra, n): importancia<br />n:   14<br />tipo: Positiva","reorder(Palabra, n): claro<br />n:   13<br />tipo: Positiva","reorder(Palabra, n): soluciones<br />n:   13<br />tipo: Positiva","reorder(Palabra, n): bienes<br />n:   12<br />tipo: Positiva","reorder(Palabra, n): positivo<br />n:   12<br />tipo: Positiva","reorder(Palabra, n): fuerza<br />n:   11<br />tipo: Positiva","reorder(Palabra, n): importante<br />n:   11<br />tipo: Positiva","reorder(Palabra, n): motivado<br />n:   11<br />tipo: Positiva","reorder(Palabra, n): protegido<br />n:   11<br />tipo: Positiva","reorder(Palabra, n): solución<br />n:   11<br />tipo: Positiva","reorder(Palabra, n): proteger<br />n:   10<br />tipo: Positiva","reorder(Palabra, n): significativo<br />n:   10<br />tipo: Positiva","reorder(Palabra, n): significativo<br />n:   10<br />tipo: Positiva","reorder(Palabra, n): libertad<br />n:    9<br />tipo: Positiva","reorder(Palabra, n): asegurar<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): capacidad<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): compromiso<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): excelente<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): fortalecer<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): interesado<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): intereses<br />n:    8<br />tipo: Positiva","reorder(Palabra, n): alcances<br />n:    7<br />tipo: Positiva","reorder(Palabra, n): avanzado<br />n:    7<br />tipo: Positiva","reorder(Palabra, n): consentimiento<br />n:    7<br />tipo: Positiva","reorder(Palabra, n): cumplido<br />n:    7<br />tipo: Positiva","reorder(Palabra, n): amable<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): ampliar<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): claramente<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): grande<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): posibilidades<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): subsidios<br />n:    6<br />tipo: Positiva","reorder(Palabra, n): concedido<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): confianza<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): confianza<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): importar<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): respalda<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): tesoro<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): validado<br />n:    5<br />tipo: Positiva","reorder(Palabra, n): aclara<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): cierto<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): cierto<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): imparcial<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): perfectamente<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): popular<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): viva<br />n:    4<br />tipo: Positiva","reorder(Palabra, n): afecto<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): digno<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): disfrutar<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): dulce<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): espíritu<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): felicidad<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): felicidad<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): garantía<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): invitación<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): justa<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): solidaridad<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): tranquilo<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): útil<br />n:    3<br />tipo: Positiva","reorder(Palabra, n): aceptar<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): aceptar<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): favores<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): firme<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): fuerte<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): ganador<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): mejorar<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): pacífico<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): prestigio<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): promoviendo<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): recomienda<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): unido<br />n:    2<br />tipo: Positiva","reorder(Palabra, n): activo<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): activo<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): anticipación<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): aprecia<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): compartido<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): compartir<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): concesión<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): crecimiento<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): estable<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): gratificación<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): gratis<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): habilidades<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): heroico<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): impulsar<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): innovar<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): justificado<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): motivar<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): oportunidad<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): oportunidad<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): oportunidades<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): promueve<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): sinceramente<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): soportado<br />n:    1<br />tipo: Positiva","reorder(Palabra, n): soportes<br />n:    1<br />tipo: Positiva"],"type":"bar","marker":{"autocolorscale":false,"color":"rgba(0,191,196,1)","line":{"width":1.88976377952756,"color":"transparent"}},"name":"Positiva","legendgroup":"Positiva","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.4063926940639,"r":7.30593607305936,"b":27.2146118721461,"l":98.6301369863014},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"title":{"text":"Sentimientos","font":{"color":"rgba(0,0,0,1)","family":"","size":17.5342465753425},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-152.55,3203.55],"tickmode":"array","ticktext":["0","1000","2000","3000"],"tickvals":[0,1000,2000,3000],"categoryorder":"array","categoryarray":["0","1000","2000","3000"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,290.6],"tickmode":"array","ticktext":["abandonado","activo","ansiedad","anticipación","aprecia","caído","cancelado","cancelar","ciego","cobrar","compartido","compartir","concesión","crecimiento","crítico","denunciar","dudoso","enfermedad","enfermedades","error","escasez","esperar","estable","estragos","exposición","fatiga","fraudulento","gratificación","gratis","habilidades","heroico","impedido","impulsar","inconveniente","infantil","inferior","innovar","insomnio","justificado","motivar","oportunidad","oportunidades","parcialidad","perturbador","promueve","propaganda","protesta","recortes","rompió","sentencia","sinceramente","soportado","soportes","sufrir","viola","violencia","accidente","aceptar","acusaciones","arreglado","barrera","destruyendo","engaño","esconder","favores","firme","fuerte","ganador","ilegal","lesionado","límites","matar","mejorar","muerte","pacífico","prestigio","promoviendo","puto","recomienda","tragedia","unido","violación","afecto","conflicto","digno","disfrutar","dulce","errores","espíritu","felicidad","garantía","invitación","justa","refugios","solidaridad","suficiente","tranquilo","útil","aclara","cierto","erupción","imparcial","perfectamente","popular","prohibición","prohibido","residuos","sobrecarga","viva","accidental","concedido","confianza","contencioso","importar","manipulación","rechazado","respalda","ruina","tesoro","validado","amable","ampliar","bruto","caos","claramente","grande","negligencia","obligatorio","paradas","pérdida","posibilidades","problema","subsidios","vencido","alcances","avanzado","consentimiento","cumplido","delitos","estancado","falla","ruptura","vestíbulo","asegurar","capacidad","compromiso","desempleo","excelente","fortalecer","interesado","intereses","restos","alarma","destrucción","duda","libertad","dañar","desalojo","exponer","impuesto","negativo","preocupación","proteger","restringido","significativo","delito","expuesto","fuerza","importante","lento","motivado","protegido","solución","bienes","perdido","positivo","accidentes","acusa","cargas","claro","grave","soluciones","asuntos","dejar","importancia","justicia","llegar","negado","niega","problemas","vulnerabilidad","adecuado","facilitar","aprobación","fuga","carga","asegurado","perder","perdió","cuidado","demandas","detención","exclusión","innovación","restringir","cargos","desperdicios","indignación","provocado","beneficiado","integridad","paga","restricción","valor","beneficios","celebrado","resolver","superior","culpa","limitado","colapsado","urgente","establecido","legalmente","saludos","incompetencia","defecto","motivación","bueno","sustancialmente","determinado","dudas","cubrir","demanda","suspender","solo","deuda","comprometido","corte","víctimas","mejor","pagado","temblor","cumplir","denuncia","fortalecimiento","rescates","sobreviviente","estimado","legal","héroes","saludo","evitar","mayor","restauración","esperando","peligro","competente","riesgos","parcial","aprobado","deseo","colapso","puesto","seguro","desastre","natural","tiempo","hermosa","obligado","gracias","afectado","beneficio","sentido","realizar","acuerdo","ayuda","alerta","rescate","desastres","daño","autoridad","emergencia","responsable","apoyo","pasado","riesgo","daños","favor","tipo"],"tickvals":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190,191,192,193,194,195,196,197,198,199,200,201,202,203,204,205,206,207,208,209,210,211,212,213,214,215,216,217,218,219,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,236,237,238,239,240,241,242,243,244,245,246,247,248,249,250,251,252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,271,272,273,274,275,276,277,278,279,280,281,282,283,284,285,286,287,288,289,290],"categoryorder":"array","categoryarray":["abandonado","activo","ansiedad","anticipación","aprecia","caído","cancelado","cancelar","ciego","cobrar","compartido","compartir","concesión","crecimiento","crítico","denunciar","dudoso","enfermedad","enfermedades","error","escasez","esperar","estable","estragos","exposición","fatiga","fraudulento","gratificación","gratis","habilidades","heroico","impedido","impulsar","inconveniente","infantil","inferior","innovar","insomnio","justificado","motivar","oportunidad","oportunidades","parcialidad","perturbador","promueve","propaganda","protesta","recortes","rompió","sentencia","sinceramente","soportado","soportes","sufrir","viola","violencia","accidente","aceptar","acusaciones","arreglado","barrera","destruyendo","engaño","esconder","favores","firme","fuerte","ganador","ilegal","lesionado","límites","matar","mejorar","muerte","pacífico","prestigio","promoviendo","puto","recomienda","tragedia","unido","violación","afecto","conflicto","digno","disfrutar","dulce","errores","espíritu","felicidad","garantía","invitación","justa","refugios","solidaridad","suficiente","tranquilo","útil","aclara","cierto","erupción","imparcial","perfectamente","popular","prohibición","prohibido","residuos","sobrecarga","viva","accidental","concedido","confianza","contencioso","importar","manipulación","rechazado","respalda","ruina","tesoro","validado","amable","ampliar","bruto","caos","claramente","grande","negligencia","obligatorio","paradas","pérdida","posibilidades","problema","subsidios","vencido","alcances","avanzado","consentimiento","cumplido","delitos","estancado","falla","ruptura","vestíbulo","asegurar","capacidad","compromiso","desempleo","excelente","fortalecer","interesado","intereses","restos","alarma","destrucción","duda","libertad","dañar","desalojo","exponer","impuesto","negativo","preocupación","proteger","restringido","significativo","delito","expuesto","fuerza","importante","lento","motivado","protegido","solución","bienes","perdido","positivo","accidentes","acusa","cargas","claro","grave","soluciones","asuntos","dejar","importancia","justicia","llegar","negado","niega","problemas","vulnerabilidad","adecuado","facilitar","aprobación","fuga","carga","asegurado","perder","perdió","cuidado","demandas","detención","exclusión","innovación","restringir","cargos","desperdicios","indignación","provocado","beneficiado","integridad","paga","restricción","valor","beneficios","celebrado","resolver","superior","culpa","limitado","colapsado","urgente","establecido","legalmente","saludos","incompetencia","defecto","motivación","bueno","sustancialmente","determinado","dudas","cubrir","demanda","suspender","solo","deuda","comprometido","corte","víctimas","mejor","pagado","temblor","cumplir","denuncia","fortalecimiento","rescates","sobreviviente","estimado","legal","héroes","saludo","evitar","mayor","restauración","esperando","peligro","competente","riesgos","parcial","aprobado","deseo","colapso","puesto","seguro","desastre","natural","tiempo","hermosa","obligado","gracias","afectado","beneficio","sentido","realizar","acuerdo","ayuda","alerta","rescate","desastres","daño","autoridad","emergencia","responsable","apoyo","pasado","riesgo","daños","favor","tipo"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"y":0.959399606299213},"annotations":[{"text":"tipo","x":1.02,"y":1,"showarrow":false,"ax":0,"ay":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xref":"paper","yref":"paper","textangle":-0,"xanchor":"left","yanchor":"bottom","legendTitle":true}],"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","showSendToCloud":false},"source":"A","attrs":{"2aac29de3d60":{"x":{},"y":{},"fill":{},"type":"bar"}},"cur_data":"2aac29de3d60","visdat":{"2aac29de3d60":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+<p>Otra de las ventajas de <strong>plotly</strong> es que te permite convertir tus gráficas de ggplot en gráficas interactivas: puedes graficar todas las palabras y le haces <em>zoom</em> al área que quieras.</p>
+<p>Ya que tenemos un conjunto de datos por sentimiento, vamos a crear dos nubes de palabras. Una con sentimientos positivos y otra con sentimientos negativos.</p>
+Nube de palabras negativa
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span><span class='op'>(</span><span class='fl'>123</span><span class='op'>)</span>
+<span class='va'>nube_n</span> <span class='op'>&lt;-</span> <span class='va'>paf</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>tipo</span> <span class='op'>==</span> <span class='st'>"Negativa"</span><span class='op'>)</span>
+<span class='va'>nega</span> <span class='op'>&lt;-</span> <span class='fu'>wordcloud2</span><span class='op'>(</span><span class='va'>nube_n</span><span class='op'>)</span>
+<span class='va'>nega</span>
+</code></pre>
+</div>
+<div id="htmlwidget-3aad56389f7e38ba34b7" style="width:624px;height:384px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3aad56389f7e38ba34b7">{"x":{"word":["daños","riesgo","pasado","emergencia","daño","daño","desastres","rescate","alerta","afectado","tiempo","desastre","puesto","colapso","colapso","parcial","riesgos","peligro","peligro","peligro","evitar","evitar","evitar","denuncia","temblor","víctimas","víctimas","corte","deuda","solo","suspender","demanda","cubrir","dudas","defecto","defecto","incompetencia","colapsado","urgente","limitado","culpa","paga","restricción","provocado","cargos","desperdicios","indignación","demandas","demandas","detención","exclusión","restringir","perder","perdió","carga","fuga","negado","niega","problemas","vulnerabilidad","dejar","accidentes","acusa","cargas","grave","perdido","delito","expuesto","lento","dañar","desalojo","exponer","impuesto","negativo","preocupación","restringido","alarma","destrucción","duda","desempleo","restos","delitos","estancado","falla","ruptura","vestíbulo","bruto","caos","negligencia","obligatorio","paradas","pérdida","problema","problema","vencido","accidental","contencioso","manipulación","manipulación","rechazado","rechazado","ruina","ruina","erupción","prohibición","prohibido","residuos","sobrecarga","conflicto","errores","errores","refugios","suficiente","accidente","acusaciones","arreglado","barrera","destruyendo","engaño","engaño","esconder","ilegal","lesionado","límites","matar","muerte","puto","tragedia","violación","abandonado","ansiedad","caído","caído","cancelado","cancelado","cancelar","ciego","cobrar","crítico","denunciar","dudoso","dudoso","enfermedad","enfermedades","error","escasez","escasez","esperar","estragos","exposición","fatiga","fraudulento","impedido","inconveniente","infantil","inferior","insomnio","parcialidad","perturbador","propaganda","protesta","recortes","rompió","sentencia","sufrir","viola","violencia"],"freq":[1251,1194,1095,794,670,670,566,561,477,251,233,190,172,170,170,153,143,113,113,113,100,100,100,76,64,56,56,54,53,50,47,42,41,40,37,37,36,31,31,30,29,25,25,23,22,22,22,21,21,21,21,21,20,20,19,18,15,15,15,15,14,13,13,13,13,12,11,11,11,10,10,10,10,10,10,10,9,9,9,8,8,7,7,7,7,7,6,6,6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,4,4,4,4,4,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":0.143884892086331,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+Nube de palabras positivas:
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre><code><span class='va'>nube_p</span> <span class='op'>&lt;-</span> <span class='va'>paf</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>tipo</span> <span class='op'>==</span> <span class='st'>"Positiva"</span><span class='op'>)</span>
+<span class='va'>posi</span> <span class='op'>&lt;-</span> <span class='fu'>wordcloud2</span><span class='op'>(</span><span class='va'>nube_p</span><span class='op'>)</span>
+<span class='va'>posi</span>
+</code></pre>
+</div>
+<div id="htmlwidget-41a24a7cc5194602bffa" style="width:624px;height:384px;" class="wordcloud2 html-widget"></div>
+<script type="application/json" data-for="htmlwidget-41a24a7cc5194602bffa">{"x":{"word":["tipo","favor","apoyo","apoyo","apoyo","responsable","autoridad","rescate","ayuda","ayuda","acuerdo","realizar","sentido","beneficio","gracias","obligado","hermosa","natural","seguro","seguro","deseo","deseo","aprobado","competente","esperando","mayor","mayor","restauración","héroes","saludo","legal","estimado","estimado","sobreviviente","sobreviviente","rescates","fortalecimiento","cumplir","pagado","mejor","comprometido","determinado","sustancialmente","bueno","motivación","saludos","establecido","legalmente","celebrado","resolver","resolver","resolver","superior","beneficios","valor","valor","beneficiado","integridad","cuidado","innovación","asegurado","aprobación","aprobación","adecuado","facilitar","justicia","llegar","asuntos","importancia","claro","soluciones","bienes","positivo","fuerza","importante","motivado","protegido","solución","proteger","significativo","significativo","libertad","asegurar","capacidad","compromiso","excelente","fortalecer","interesado","intereses","alcances","avanzado","consentimiento","cumplido","amable","ampliar","claramente","grande","posibilidades","subsidios","concedido","confianza","confianza","importar","respalda","tesoro","validado","aclara","cierto","cierto","imparcial","perfectamente","popular","viva","afecto","digno","disfrutar","dulce","espíritu","felicidad","felicidad","garantía","invitación","justa","solidaridad","tranquilo","útil","aceptar","aceptar","favores","firme","fuerte","ganador","mejorar","pacífico","prestigio","promoviendo","recomienda","unido","activo","activo","anticipación","aprecia","compartido","compartir","concesión","crecimiento","estable","gratificación","gratis","habilidades","heroico","impulsar","innovar","justificado","motivar","oportunidad","oportunidad","oportunidades","promueve","sinceramente","soportado","soportes"],"freq":[1466,1317,1017,1017,1017,886,711,561,467,467,411,317,271,268,249,240,236,224,187,187,166,166,155,128,109,100,100,100,94,94,91,89,89,88,88,81,77,65,62,59,54,40,39,38,37,35,32,32,28,28,28,28,28,27,25,25,24,24,21,21,20,18,18,16,16,15,15,14,14,13,13,12,12,11,11,11,11,11,10,10,10,9,8,8,8,8,8,8,8,7,7,7,7,6,6,6,6,6,6,5,5,5,5,5,5,5,4,4,4,4,4,4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],"fontFamily":"Segoe UI","fontWeight":"bold","color":"random-dark","minSize":0,"weightFactor":0.122783083219645,"backgroundColor":"white","gridSize":0,"minRotation":-0.785398163397448,"maxRotation":0.785398163397448,"shuffle":true,"rotateRatio":0.4,"shape":"circle","ellipticity":0.65,"figBase64":null,"hover":null},"evals":[],"jsHooks":{"render":[{"code":"function(el,x){\n                        console.log(123);\n                        if(!iii){\n                          window.location.reload();\n                          iii = False;\n\n                        }\n  }","data":null}]}}</script>
+</div>
+<p>Con esto tenemos una primera aproximación al análisis de sentimientos en español. Hay un paquete llamado <strong>syuzhet</strong> que encontré gracias a <a href="https://github.com/desareca/Analisis-Sentimientos-Noticieros">desareca</a>. Voy a seguir investigando para hacer mejores análisis.</p>
+<p>¡Muchas gracias por leerme!</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

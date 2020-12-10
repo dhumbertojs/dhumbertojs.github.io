@@ -1,5 +1,5 @@
 ---
-title: "DÃ­as sin ti (anÃ¡lisis de texto)"
+title: "Días sin ti (análisis de texto)"
 description: |
   Análisis de sentimiento de la novela "Días sin ti" de Elvira Sastre.
 author:
@@ -10,12 +10,13 @@ output:
     self_contained: false
 ---
 
-# Bienvenidas
-¡Hola! En esta ocasión sigo investigando hacer cosas interesantes de análisis de texto, pero voy a aprovechar para practicar como sacar información de archivos pdf. Esta es una gran herramienta porque en el mundo real los gobiernos nos mandan información pública en pdf y muchas veces pasarlos a mano no es una opción viable...
+# ¡Bienvenidas!
+
+En esta ocasión sigo investigando hacer cosas interesantes de análisis de texto, pero voy a aprovechar para practicar como sacar información de archivos pdf. Esta es una gran herramienta porque en el mundo real los gobiernos nos mandan información pública en pdf y muchas veces pasarlos a mano no es una opción viable...
 
 Bueno, regresando al tema, hoy voy a analizar una novela que acabo de terminar: Días sin ti, de [Elvira Sastre](https://twitter.com/elvirasastre). Una novela de corazones rotos a través de la perspectiva de una abuela que perdió a su esposo durante la Guerra Civil Española, y su nieto a quien su pareja lo deja. Son doce capítulos que representan las fases del enamoramiento, y si no la han leído, haganlo, es hermosa.
 
-![](/2020-12-01-días-sin-ti-análisis-de-texto/index_files/dias_sin_ti.jpg)
+No saben como me emociona la posibilidad de hacer este análisis.
 
 > Días sin ti es una historia de complicidad a través del tiempo, la de una abuela y su nieto. Dora, maestra en tiempos de la República, comparte con Gael la historia que la ha llevado a ser quien es. Con ternura, pero con crudeza, confiesa sus emociones a su nieto escultor, un joven con una sensibilidad especial, y le brinda, sin que éste lo sepa todavía, las claves para reponerse de las heridas causadas por un amor truncado.
 > 
@@ -23,7 +24,7 @@ Bueno, regresando al tema, hoy voy a analizar una novela que acabo de terminar: 
 
 Para realizar este análisis, es necesario que utilicen su copia de la novela en pdf.
 
-```{r Libraries, message=FALSE, warning=FALSE}
+```{r echo=T, Libraries, message=FALSE, warning=FALSE}
 library(stringr)
 library(dplyr)
 library(tidyr)
@@ -40,12 +41,12 @@ Hay **2** paquetes nuevos: [pdftools](https://cran.r-project.org/web/packages/pd
 
 El segundo, es un paquete que tiene cuatro diccionarios de sentimientos. En otras palabras, gente muy chingona está alimentando este paquete constantemente con palabras y sentimientos de diversas fuentes.
 
-```{r Directorios, include=FALSE}
+```{r}
 inp <- "/Users/dhjs/Documents/projects/data_blog"
 pdf <- paste(inp, "dias_sin_ti.pdf", sep ="/")
 ```
 
-```{r Procesamiento}
+```{r echo=T}
 dias_pdf <- pdf_text(pdf) %>% 
   as_tibble() %>% 
   mutate(
@@ -59,7 +60,7 @@ dias <- dias_pdf %>%
 
 Hasta aquí el proceso es el mismo, leemos nuestra copia de "Días sin ti" (que no sale en el código), y luego lo convertimos en *data frame* (as_tibble), creo una variable para dividir el libro en capítulos y le quito el número de página a todos las páginas. Por último, convertimos todo a **tidy text** y quitamos las *stop words*.
 
-```{r Análisis simple}
+```{r echo=T}
 dias %>% 
   count(Palabra, sort = T) %>% 
   filter(n >= 99) %>% 
@@ -73,10 +74,10 @@ dias %>%
 ```
 
 
-##Sentimient analysis
+## Sentimient analysis
 Ahora, vamos a realizar el análisis de sentimientos como la vez anterior y con otra función para comparar resultados.
 
-```{r Análisis de sentimiento con Afinn}
+```{r echo=T}
 afinn <- read.csv("https://raw.githubusercontent.com/jboscomendoza/rpubs/master/sentimientos_afinn/lexico_afinn.en.es.csv")
 inner_join(dias, afinn, by = "Palabra") %>% 
   mutate(tipo = ifelse(Puntuacion > 0, "Positiva", "Negativa")) %>% 
@@ -105,14 +106,14 @@ Ahora, vamos a utilizar el paquete syuzhet. Ojo, esta función tarda un rato en 
 - surprise
 - trust
 
-```{r Sentimientos de Syuzhet}
+```{r echo=T}
 dias_nrc <- get_nrc_sentiment(char_v = dias$Palabra, language = "spanish")
 dias_final <- bind_cols(dias, dias_nrc)
 ```
 
 Posteriormente, hay que unir este data frame por emociones con nuestro data frame original. Le hice una transformación con tidyr para poder gráficar y así debe de quedar: 
 
-```{r Análisis de Syuzhet}
+```{r echo=T}
 dias_final %>% 
   pivot_longer(
     cols = 3:12
@@ -140,7 +141,7 @@ Claramente syuzhet es superior a afinn. Pero requiere mucho más tiempo de proce
 
 Leí en la documentación que hay diversas metodologías para realizar el procesamiento de texto. Pero eso es material para otro post. Ahora quiero aprovechar esta claificación para revisar los sentimientos por capitulo :D
 
-```{r Sentimientos por palabra y capítulo}
+```{r echo=T}
 plot_chapter_all <- dias_final %>% 
   pivot_longer(
     cols = 3:12
@@ -176,7 +177,7 @@ Aún tengo problemas con plotly, pero con esto ustedes pueden ver el porcentaje 
 
 Ahora, solo veamos las emociones negativas y positivas por capítulo. 
 
-```{r Sentimientos positivos y negativos por palabra y por capítulo}
+```{r echo=T}
 plot_chapter <- dias_final %>% 
   select(-c(3:10)) %>% 
   pivot_longer(
@@ -209,7 +210,7 @@ Con esto tenemos una aproximación más clara sobre lo que trata el libro, o mej
 
 ## Matriz tf-df
 
-```{r tf-idf por palabra}
+```{r echo=T}
 dias %>% 
   group_by(capitulo) %>% 
   count(Palabra, sort = T) %>% 
@@ -230,7 +231,7 @@ dias %>%
 ```
 Con esto, es evidente que las palabras más utilizadas en un texto (usualmente conectores) no son tan importantes. La intuición es que la importancia de una palabra es inversamente proporcional a su frecuencia.Pero, algo que ya habíamos empezado a explorar en el primer post de esta serie es entender que a veces una palabra no tiene significado por sí misma, sino que su significado lo obtiene en función de las otras palabras a su alrededor. ¡Vamos a regresar con los *n-gramas*!
 
-```{r Bigrama}
+```{r echo=T}
 bigramas <- dias_pdf %>% 
   unnest_tokens(bigrama, value, token = "ngrams", n = 2) %>% 
   separate(bigrama, c("palabra1", "palabra2"), sep = " ") %>% 
@@ -243,7 +244,7 @@ bigramas %>%
 
 Con los **n-gramas** también se puede hacer la matriz *tf-idf*
 
-```{r Bigrama tf-idf}
+```{r echo=T}
 bigramas %>% 
   unite(bigrama, palabra1, palabra2, sep = " ") %>% 
   count(capitulo, bigrama, sort = T) %>% 
@@ -251,7 +252,7 @@ bigramas %>%
   arrange(desc(tf_idf))
 ```
 
-```{r include = FALSE}
+```{r}
 # dias_topic <- dias %>% 
 #   count(capitulo, Palabra, sort = T)
 # 
