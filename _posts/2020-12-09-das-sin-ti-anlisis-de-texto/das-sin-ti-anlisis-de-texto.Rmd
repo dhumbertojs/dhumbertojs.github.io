@@ -271,7 +271,7 @@ bigramas %>%
 
 Y con esto, ya casi terminamos de revisar todo lo que se puede hacer con análisis de texto. El único tema faltante es **topic modeling** pero, aún no lo entiendo bien. De verdad, lean Días sin ti, es una gran novela. Disfruté mucho hacer este post. Si quieren revisar temas de [topic modeling](http://www.aic.uva.es/cuentapalabras/topic-modeling.html) denle clic al link de la Universidad de Valladolid.
 
-```{r echo=T, preview = T}
+```{r echo=T, layout="l-body-outset", preview = T}
 set.seed(123)
 dias %>% 
   count(Palabra, sort = T) %>% 
