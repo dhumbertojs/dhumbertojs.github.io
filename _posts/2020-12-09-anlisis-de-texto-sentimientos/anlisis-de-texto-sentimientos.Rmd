@@ -115,7 +115,7 @@ Otra de las ventajas de **plotly** es que te permite convertir tus gráficas de 
 Ya que tenemos un conjunto de datos por sentimiento, vamos a crear dos nubes de palabras. Una con sentimientos positivos y otra con sentimientos negativos.
 
 Nube de palabras negativa
-```{r echo=T, preview=T}
+```{r echo=T, layout="l-body-outset", preview = T}
 set.seed(123)
 nube_n <- paf %>% 
   filter(tipo == "Negativa")

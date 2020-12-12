@@ -100,7 +100,7 @@ ggplot(datos, aes(x = cut, fill = color)) +
 
 La función labs es muy útil para modificar las gráficas y es bastante intuitiva. En este caso, todo lo que está en comillas son textos (*strings*)
 
-```{r echo=T}
+```{r echo=T, layout="l-body-outset", preview = T}
 ggplot(datos, aes(x = cut, fill = color)) +
   geom_bar(position = "dodge") +
   labs(title = "Mi primera gráfica",

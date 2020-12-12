@@ -114,7 +114,7 @@ Esta gráfica muestra el porcentaje por mes y por año. Como podrán notar, 2019
 
 En el caso de scales:: , esta es una forma de utilizar una función de un paquete sin tener que poner **library**. ¿Qué por qué necesitamos esto? A veces cargar un paquete es demasiado para nuestra computadora, piensa que un paquete es como un foco, no prendes un foco que no utilizaras prontamente.
 
-```{r echo=T}
+```{r echo=T, layout="l-body-outset", preview = T}
 graf2 <- datos %>% 
   mutate(cont = 1) %>% 
   filter(ano < 2019) %>% 
