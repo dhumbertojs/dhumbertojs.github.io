@@ -35,9 +35,10 @@ library(tm)
 library(syuzhet)
 library(plotly)
 library(forcats)
+library(wordcloud2)
 ```
 
-Hay **2** paquetes nuevos: [pdftools](https://cran.r-project.org/web/packages/pdftools/pdftools.pdf) y [syuxhet](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html). El primero sirve para extraer texto, adjuntos y *metadata* de los pdf (ojo, yo personalmente no recomiendo este paquete para extraer tablas/bases de datos, para eso yo recomiendo usar [tabulizer](https://cran.r-project.org/web/packages/tabulizer/vignettes/tabulizer.html))
+Hay **2** paquetes nuevos: [pdftools](https://cran.r-project.org/web/packages/pdftools/pdftools.pdf) y [syuzhet](https://cran.r-project.org/web/packages/syuzhet/vignettes/syuzhet-vignette.html). El primero, sirve para extraer texto, adjuntos y *metadata* de los pdf (ojo, yo personalmente no recomiendo este paquete para extraer tablas/bases de datos, para eso yo recomiendo usar [tabulizer](https://cran.r-project.org/web/packages/tabulizer/vignettes/tabulizer.html)).
 
 El segundo, es un paquete que tiene cuatro diccionarios de sentimientos. En otras palabras, gente muy chingona está alimentando este paquete constantemente con palabras y sentimientos de diversas fuentes.
 
@@ -58,7 +59,7 @@ dias <- dias_pdf %>%
   filter(!Palabra %in% stopwords("es"))
 ```
 
-Hasta aquí el proceso es el mismo, leemos nuestra copia de "Días sin ti" (que no sale en el código), y luego lo convertimos en *data frame* (as_tibble), creo una variable para dividir el libro en capítulos y le quito el número de página a todos las páginas. Por último, convertimos todo a **tidy text** y quitamos las *stop words*.
+Hasta aquí, el proceso es el mismo: leemos nuestra copia de "Días sin ti" (que no sale en el código), y luego lo convertimos en *data frame* (as_tibble), creo una variable para dividir el libro en capítulos y le quito el número de página a todos las páginas. Por último, convertimos todo a **tidy text** y quitamos las *stop words*.
 
 ```{r echo=T}
 dias %>% 
@@ -74,7 +75,7 @@ dias %>%
 ```
 
 
-## Sentimient analysis
+## Sentiment analysis
 Ahora, vamos a realizar el análisis de sentimientos como la vez anterior y con otra función para comparar resultados.
 
 ```{r echo=T}
@@ -96,7 +97,9 @@ inner_join(dias, afinn, by = "Palabra") %>%
   
 ```
 
-Ahora, vamos a utilizar el paquete syuzhet. Ojo, esta función tarda un rato en correr. Nos va a devolver un data frame con los resultados por palabra en 8 categorías diferentes: 
+Ahora, vamos a utilizar el paquete syuzhet. Ojo, esta función tarda un rato en correr. 
+
+Nos va a devolver un data frame con los resultados por palabra en 8 categorías diferentes: 
 - anger
 - anticipation 
 - disgust
@@ -111,9 +114,9 @@ dias_nrc <- get_nrc_sentiment(char_v = dias$Palabra, language = "spanish")
 dias_final <- bind_cols(dias, dias_nrc)
 ```
 
-Posteriormente, hay que unir este data frame por emociones con nuestro data frame original. Le hice una transformación con tidyr para poder gráficar y así debe de quedar: 
+Posteriormente, hay que unir este data frame por emociones con nuestro data frame original. Le hice una transformación con tidyr para poder gráficar, y así debe de quedar: 
 
-```{r echo=T}
+```{r echo=T, preview=T}
 dias_final %>% 
   pivot_longer(
     cols = 3:12
@@ -137,9 +140,11 @@ dias_final %>%
   theme(legend.position =  "blank")
 ```
 
-Claramente syuzhet es superior a afinn. Pero requiere mucho más tiempo de procesamiento, y equivocarte menos. Creo que lo vale. Recapitulemos un poco: afinn clasifica las palabras y nosotros le asignamos una intención positica o negativa en función de su signo distinto a cero. Mientras que syuzhet te devuelve un data frame con 10 categorías, ya que una sola palabra puede tener multiples intenciones. Además, te indica si la intención de esta es positiva o negativa. 
+Claramente syuzhet es superior a afinn. Pero requiere mucho más tiempo de procesamiento, y por lo tanto si te equivocas vas a darte de topes, pero creo que lo vale. 
 
-Leí en la documentación que hay diversas metodologías para realizar el procesamiento de texto. Pero eso es material para otro post. Ahora quiero aprovechar esta claificación para revisar los sentimientos por capitulo :D
+Recapitulemos un poco: afinn clasifica las palabras y nosotros le asignamos una intención positica o negativa en función de su signo distinto a cero. Mientras que syuzhet te devuelve un data frame con 10 categorías, ya que una sola palabra puede tener multiples intenciones. Además, te indica si la intención de esta es positiva o negativa. 
+
+Leí en la documentación, que hay diversas metodologías para realizar el procesamiento de texto. Pero eso es material para otro post. Ahora quiero aprovechar esta claificación para revisar los sentimientos por capitulo :D
 
 ```{r echo=T}
 plot_chapter_all <- dias_final %>% 
@@ -173,6 +178,7 @@ ggplotly(plot_chapter_all) %>%
   layout(showlegend = F)
   
 ```
+
 Aún tengo problemas con plotly, pero con esto ustedes pueden ver el porcentaje de los sentimientos por capítulos. Este cálculo es la suma de todas las observaciones por capítulo. Es decir, si hay 10 puntos de ira, y en el capitulo hay 100 puntos, esto implica que el 10% de texto del capítulo tiene la emoción del enojo (ira).
 
 Ahora, solo veamos las emociones negativas y positivas por capítulo. 
@@ -229,6 +235,7 @@ dias %>%
        subtitle = "Importancia relativa de las palabras", 
        x = "", y = "")
 ```
+
 Con esto, es evidente que las palabras más utilizadas en un texto (usualmente conectores) no son tan importantes. La intuición es que la importancia de una palabra es inversamente proporcional a su frecuencia.Pero, algo que ya habíamos empezado a explorar en el primer post de esta serie es entender que a veces una palabra no tiene significado por sí misma, sino que su significado lo obtiene en función de las otras palabras a su alrededor. ¡Vamos a regresar con los *n-gramas*!
 
 ```{r echo=T}
@@ -263,3 +270,11 @@ bigramas %>%
 ```
 
 Y con esto, ya casi terminamos de revisar todo lo que se puede hacer con análisis de texto. El único tema faltante es **topic modeling** pero, aún no lo entiendo bien. De verdad, lean Días sin ti, es una gran novela. Disfruté mucho hacer este post. Si quieren revisar temas de [topic modeling](http://www.aic.uva.es/cuentapalabras/topic-modeling.html) denle clic al link de la Universidad de Valladolid.
+
+```{r echo=T, preview = T}
+set.seed(123)
+dias %>% 
+  count(Palabra, sort = T) %>% 
+  wordcloud2()
+```
+
