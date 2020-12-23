@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
+  <url>
+    <loc>https://dhumbertojs.github.io/about.html</loc>
+    <lastmod>2020-12-22T23:32:13-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/</loc>
+    <lastmod>2020-12-09T12:33:17-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-das-sin-ti-anlisis-de-texto/</loc>
+    <lastmod>2020-12-12T10:04:22-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-anlisis-de-texto-sentimientos/</loc>
+    <lastmod>2020-12-12T10:17:12-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-a-3-aos-del-sismo-desde-las-solicitudes-de-informacin/</loc>
+    <lastmod>2020-12-09T19:49:58-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-lapop-20182019/</loc>
+    <lastmod>2020-12-09T19:35:26-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-ile-en-cdmx/</loc>
+    <lastmod>2020-12-12T10:20:07-06:00</lastmod>
+  </url>
+  <url>
+    <loc>https://dhumbertojs.github.io/posts/2020-12-09-tidyverse/</loc>
+    <lastmod>2020-12-22T23:44:15-06:00</lastmod>
+  </url>
+</urlset>

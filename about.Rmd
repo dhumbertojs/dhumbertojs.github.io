@@ -1,5 +1,5 @@
 ---
-title: "Proyecto nuevo para evadir mis responsabilidades"
+title: "Les traigo paz... "
 description: |
   ¡Hola mundo!
 ---

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>Proyecto nuevo para evadir mis responsabilidades</title>
+    <link>https://dhumbertojs.github.io</link>
+    <atom:link href="https://dhumbertojs.github.io/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Maratón chafarama de sábado por la noche v2.0
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>mi�., 09 dic. 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Días sin ti (análisis de texto)</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-das-sin-ti-anlisis-de-texto</link>
+      <description>Análisis de sentimiento de la novela "Días sin ti" de Elvira Sastre.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-das-sin-ti-anlisis-de-texto</guid>
+      <pubDate>mi�., 09 dic. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-das-sin-ti-anlisis-de-texto/das-sin-ti-anlisis-de-texto_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>Análisis de texto: sentimientos</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-anlisis-de-texto-sentimientos</link>
+      <description>Primer acercamiento al análisis de sentimientos/emociones.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-anlisis-de-texto-sentimientos</guid>
+      <pubDate>s�b., 14 nov. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-anlisis-de-texto-sentimientos/anlisis-de-texto-sentimientos_files/figure-html5/unnamed-chunk-6-1.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>A 3 años del sismo... desde las solicitudes de información</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-a-3-aos-del-sismo-desde-las-solicitudes-de-informacin</link>
+      <description>Breve análisis de las solicitudes de información pública relacionadas con el sismo del 19-S.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-a-3-aos-del-sismo-desde-las-solicitudes-de-informacin</guid>
+      <pubDate>jue., 24 sep. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-a-3-aos-del-sismo-desde-las-solicitudes-de-informacin/a-3-aos-del-sismo-desde-las-solicitudes-de-informacin_files/figure-html5/unnamed-chunk-14-1.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>LAPOP 2018/2019</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-lapop-20182019</link>
+      <description>Treemaps del último barometro de las américas.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-lapop-20182019</guid>
+      <pubDate>mar., 12 may. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-lapop-20182019/lapop-20182019_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>ILE en CDMX</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-ile-en-cdmx</link>
+      <description>Primer análisis de datos sobre Interrupción Legal del Embarazo en la CDMX.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-ile-en-cdmx</guid>
+      <pubDate>jue., 30 abr. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-ile-en-cdmx/ile-en-cdmx_files/figure-html5/unnamed-chunk-10-1.png" medium="image" type="image/png"/>
+    </item>
+    <item>
+      <title>Tidyverse</title>
+      <dc:creator>David H. Jiménez</dc:creator>
+      <link>https://dhumbertojs.github.io/posts/2020-12-09-tidyverse</link>
+      <description>Breve introducción al conjunto de libraries más interesante de R.</description>
+      <guid>https://dhumbertojs.github.io/posts/2020-12-09-tidyverse</guid>
+      <pubDate>s�b., 18 abr. 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://dhumbertojs.github.io/posts/2020-12-09-tidyverse/tidyverse_files/figure-html5/unnamed-chunk-8-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+  </channel>
+</rss>
