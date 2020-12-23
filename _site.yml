@@ -3,6 +3,9 @@ title: "Proyecto nuevo para evadir mis responsabilidades"
 description: |
   Maratón chafarama de sábado por la noche v2.0
 base_url: https://dhumbertojs.github.io
+collections:
+  posts:
+    share: [twitter, linkedin, facebook]
 output_dir: "docs"
 navbar:
   right:
