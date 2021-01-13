@@ -1,0 +1,24 @@
+---
+title: "Elecciones 2021: diputaciones (parte I)"
+description: |
+  A short description of the post.
+author:
+  - name: David H. JimÃ©nez
+    url: {}
+date: 01-13-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Distill is a publication format for scientific and technical writing, native to the web.
+
+Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+
