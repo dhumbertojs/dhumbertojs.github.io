@@ -12,13 +12,29 @@ output:
 draft: true
 ---
 
+# Quiubo
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+En la última entrada vimos la composición actual de la cámara de diputados y porque habrá re elecciones este año.
 
-Distill is a publication format for scientific and technical writing, native to the web.
+El día de hoy, vamos a hablar sobre las lesgisladoras que buscan ser reelectas. En primer lugar, el INE (el organismo encargado de organizar elecciones transparentes con ayuda de ciudadanas apartidistas) estableció los [lineamientos para la reelección](http://www.diputados.gob.mx/eleccionconsecutiva2021/pdf/5_Anexo_INE_Lineamientos_Reeleccion_sesion_07dic20.pdf). Vamos a revisar los puntos más importantes.
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+# En resumen:
 
+Para buscar la reelección, las diputadas deben enviar una **carta** al INE, a la Cámara de Diputados y al Partido Político al cual pertenecen. Y ya conocemos la lista de diputadas y diputados que buscan reelegirse. ¿Se acuerdan que hay **500** escaños/curules? Bueno, pues **89.6%** (448) quieren reelegirse.
+
+Ahora, ya que dijeron que sí quieren, hay una serie de condiciones que deben cumplir.
+
+* Pueden escojer el principio por el cual quieren ser electas. Directamente (Mayoría Relativa) o indirectamente (Representación Proporcional)
+  * Si escojen ser electas por el mismo principio, deben competir en el mismo distrito (MR) o en a misma [circunscripción](https://centralelectoral.ine.mx/2017/07/20/geografia-electoral-de-comicios-en-2018-sera-la-mas-actualizada-y-homogenea-lorenzo-cordova/) (RP).
+  * **Pero** deben ser postulados por el mismo partido, o un partido de la coalición original
+Esto significa que, por ejemplo, una diputada postulada por la coalición "Juntos Haremos Historia" puede ser postulada por Morena o el Partido del Trabajo. Pero no por el Partido Encuentro Social ya que perdió el registro.
+  * **A menos** que la diputada haya **renunciado** al partido, o haya perdido la pertenencia antes de la mitad del mandato (antes del 20 de febrero del 2020).
+  * **Excepto** en el caso de diputadas **plurinomilaes** o de Representación Proporcional.
+  * Las legisladoras pueden decidir si se separan o no del cargo durante el proceso. Lo que significa que si no dejan su curul, tienen que asistir a trabajar, no pueden utilizar recursos de la cámara de diputados y no pueden ocupar su posición como legisladora para hacer campaña electoral a su favor.
+
+Por último, los partidos están obligados a garantizar paridad en las candidaturas, contemplando a las legisladoras que buscan la reelección. Asimismo, ningún candidato puede ser postulado si está inscrito en el registro nacional de personas sancionadas en materia de violencia política en razón de género.
+
+# Quienes son?
+
+Y a todo esto, ¿quiénes son las legisladoras que buscan la reelección? La lista original pueden consultarla [aquí](http://eleccionconsecutiva.diputados.gob.mx/contendientes). 
 
