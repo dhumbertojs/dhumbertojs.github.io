@@ -1,5 +1,5 @@
 ---
-title: "Elecciones 2021: diputaciones"
+title: "Elecciones 2021 (diputaciones)"
 description: |
   El próximo año hay elecciones federales y locales. Pero, ¿qué significa esto? En este post quiero explicar de manera muy sencilla la elección de diputaciones.
 author:
