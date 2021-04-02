@@ -1,0 +1,90 @@
+---
+title: "Análisis de iniciativas de diputadxs"
+description: |
+  A short description of the post.
+author:
+  - name: David H. Jiménez
+    url: {}
+date: 02-18-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+# Quiubo!
+
+Yo sé que no he publicado tan activamente, es porque no he tenido inspiración. Con todo lo que está pasando con las elecciones en México, no podía imaginar qué hacer. Pero luego, me llegó la epifanía: sobre las diputadas y diputados que buscan reelegirse, analizar algunas curiosidades con los datos que están obligados a publicar.
+
+Entonces, ¿por qué la Cámara de Diputados tiene que publicar información? Pues, gracias a una lucha de organizaciones de la sociedad civil se hicieron leyes para obligar al gobierno a publicar información sobre su organización y funcionamiento. Pero hecha la ley, hecha la trampa. **Pero**, también se crearon instituciones independientes que vigilaran que el gobierno.
+
+Aún así, hay las organizaciones de gobierno que evitan a toda costa publicar su información actual. Además, la información no está "limpia" lo que a veces dificulta su análisis.
+
+En este caso, revisé en la página de la [Cámara de Diputados](http://pot.diputados.gob.mx/Obligaciones-de-Ley/Articulo-72/VII.-Iniciativas-de-ley-o-decretos) las inciativas que presentaron las y los diputados desde 2018. Hay que recordar que la LXIV (64) legislatura inició en 2018 y termina en 2021. El proceso de limpieza de los datos lo pueden checar en este [repo](https://github.com/dhumbertojs/LXIV_diputaciones) (porque si estuvo muy talachudo).
+
+## Preparación
+
+Empecemos desde el principio, los paquetes que vamos a utilizar.
+
+```{r echo = T}
+library(dplyr)
+library(stringr)
+library(tidytext)
+library(rvest)
+library(ggplot2)
+library(plotly)
+```
+
+Aquí hay un paquete nuevo [**rvest**](https://cran.r-project.org/web/packages/rvest/rvest.pdf). Este nos va a permitir utilizar y consumir directamente las páginas web. Esto quiere decir que podemos extraer la info de páginas para procesar y analizar los datos. El ejemplo que todo munda usa son las calificaciones [IMDB](https://www.imdb.com/), página que contiene calificaciones para casi todos las películas y series.
+
+En un [post anterior](https://dhumbertojs.github.io/posts/2020-12-22-elecciones-2021-algunas-notas/) limpié la lista de personas que buscan su reelección. Lista que pueden consultar en el post, o descargarla [aquí](https://docs.google.com/spreadsheets/d/e/2PACX-1vT_aHplhF1Mm8OcnrVg3y9PI0O-TihXb3Ca4pEhZ825a7nfSkA-a7l7lv3JGkmz8aXZAyc8fbuHgZPm/pub?gid=0&single=true&output=csv"). A esta lista, le vamos a "pegar" la otra base de datos que limpié sobre las iniciativas.
+
+```{r echo = T}
+inp <- "/Users/dhjs/Documents/projects/LXIV_diputaciones/output"
+
+d.re <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_aHplhF1Mm8OcnrVg3y9PI0O-TihXb3Ca4pEhZ825a7nfSkA-a7l7lv3JGkmz8aXZAyc8fbuHgZPm/pub?gid=0&single=true&output=csv",fileEncoding = "UTF-8") %>% 
+  rename(primero = paterno, segundo = materno) %>% 
+  mutate(
+    nombre_completo = paste(nombre, primero, segundo, sep = " "),
+    nombre_completo = toupper(nombre_completo),
+    nombre_completo = str_replace_all(nombre_completo,
+                                      c("Á" = "A", "É" = "E",
+                                        "Í" = "I", "Ó" = "O",
+                                        "Ú" = "U")),
+    identificador = 1:n()
+    ) %>% 
+  janitor::clean_names()
+
+iniciativas <- read.csv(paste(inp, "iniciativas.csv", sep = "/"))
+```
+
+El primer paso, es unir ambas bases de datos. Como el único campo que está en ambas es el nombre completo del o la diputada, tenemos que utilizarlo. Pero, pero, pero, pero... yo no recomiendo utilizar textos (*strings*) para unir bases de datos. ¿Por qué? Pues... imagínate que tienes la misma columna en dos bases con el nombre de alguien: Juan López y JUAN LOPEZ. Nosotras como personas sabemos que es la misma persona, pero las computadoras no.
+
+Para evitar, en la medida de lo posible, este problema puse todos los nombres en mayusculas y le quité las vocales con acento. Además de pronombres, cargos y partido que venían mezclados en la misma celda.
+
+La lógica de hacer esto es la siguiente: supongo que si una diputada suscribe una iniciativa, es porque apoya el contenido de la misma. Entonces, en iniciativas con varias diputadas, uno podría entender cuales son los temas que le interesan indivualmente. Cosa que no sabríamos si es que la iniciativa la firma uno o varios grupos parlamentarios.
+
+```{r echo = T}
+inic <- left_join(d.re, iniciativas, by = "nombre_completo") 
+```
+
+Para unir las bases, exiten funciones **join** de dplyr. En este caso, *left_join*, es unir la base de la derecha (iniciativas) con la de la izquierda (d.re).
+
+## Análisis
+
+```{r echo = T}
+inic <- inic %>% 
+  mutate(
+    iniciativas = ifelse(is.na(hipervinculo_al_documento), 0, 1)
+  )
+
+plot1 <- inic %>% 
+  group_by(nombre_completo) %>% 
+  summarise(iniciativas = sum(iniciativas)) %>% 
+  ggplot(aes(x = reorder(nombre_completo, iniciativas), y = iniciativas)) +
+  geom_bar(stat = "identity") +
+  labs(x = "Nombre completo", y = "Iniciativas presentadas") +
+  coord_flip()
+ggplotly(plot1)
+```
+

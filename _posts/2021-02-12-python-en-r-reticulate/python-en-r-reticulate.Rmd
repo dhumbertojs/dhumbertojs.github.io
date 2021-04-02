@@ -1,0 +1,51 @@
+---
+title: "Python en R!! (reticulate)"
+description: |
+  En esta ocasión, mi amiga Sara y yo les vamos a explicar un par de trucos para utilizar código de python en R. Si quieres aprender python, sabes R y no quieres instalar más cosas, esto es para ti!
+author:
+  - name: Sara Raquel Candelaria Rivera Pérez
+  - name: David H. Jiménez
+    url: {}
+date: 02-12-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+# Bienvenidas!
+
+Yo sé que no he publicado con la constancia que me gustaría, y la pandemia no ayuda. Antes de empezar, recuerden que está bien no estar bien, que no estás sola/solo y que hay gente que te quiere (yo sé que se dice muy fácil pero no lo es tanto). Si todas las costillas fueran perfectas, no existirían las salchichas :P
+
+Ahora bien, en esta ocasión habrá dos personas escribiendo. Como ya se habrán dado cuenta. Por un lado, yo voy a decir cosas sobre **reticulate**, mientras que Sara se va a rifar la explicación de **python**. 
+
+Para empezar, [reticulate](https://rstudio.github.io/reticulate/) es un paquete de R que permite utilizar código de [python](https://www.python.org/). Y ustedes, como todas unas conocedoras de ciencia de datos, desarrollo de software y estadísticas ya lo saben. Pero, nunca está de más explicar que onda. [Python](https://www.python.org/) es otro lenguaje de programación que es sumamente útil ya que permite realizar análisis de datos, gráficas y además es muy fácil de hacerlo "hablar" con otros lenguajes de programación.
+
+Para que se den una idea, **Netflix** utiliza python. Así de potente. Y dicho esto, el meme a continuación resume la colaboración:
+
+![](https://i.imgflip.com/4xuirq.jpg)
+
+## Reticulate
+
+Lo de siempre es instalar el paquete y luego "llamarlo".
+
+```{r echo = T}
+#install.packages("reticualte")
+#Como ya lo tengo instalado, no tiene caso volverlo a instalar
+library(reticulate)
+```
+
+[Aquí va una explicación de como funcionan las libraries de python]
+Aunque **python** es muy poderoso, igual que R, no puede hacerlo todo por *default*. Por esa razón, se necesitan otros paquetes. Para eso vamos a utilizar lo siguiente:
+
+```{r echo = T}
+py_install("pandas")
+```
+
+E igualito a nuestros paquetes, hay que llamarlo:
+
+```{python echo = T}
+import pandas as pd
+```
+
+Como python es otro lenguaje, hay diferencias en cómo debemos especificar las cosas para obtener los mismos resultados.
