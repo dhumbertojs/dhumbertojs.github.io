@@ -1,11 +1,11 @@
 ---
 title: "Elecciones en Sinaloa"
 description: |
-  Código para la elaboración de mapas en los distritos locales y federales del estado de Sinaloa con información de las elecciones 2018 y algunos resultados del censo 2020. Si quieren saber más del proceso electoral en el estado, vayan a [arresinaloa](https://arresinaloa.com/).
+  Código para la elaboración de mapas en los distritos locales y federales del estado de Sinaloa con información de las elecciones 2018 y algunos resultados del censo 2020. Si quieren saber más del proceso electoral en el estado, vayan a arresinaloa.
 author:
   - name: David H. Jiménez
     url: {}
-date: 04-01-2021
+date: 04-08-2021
 output:
   distill::distill_article:
     self_contained: false
@@ -53,7 +53,8 @@ res_local <- read.csv("/Users/dhjs/Documents/projects/sinaloa/data/RESULTADOS-DI
     TOTAL = str_remove_all(TOTAL, "[:punct:]"),
     LISTA = as.numeric(LISTA),
     TOTAL = as.numeric(TOTAL),
-    porcentaje = round(TOTAL*100/LISTA, 1)
+    porcentaje = round(TOTAL*100/LISTA, 1),
+    porcentaje = paste0(porcentaje, " %")
   ) %>% 
   rename(distrito_l = distrito,
          GP = Grupo_Parlamentario) %>% 
@@ -72,7 +73,7 @@ Estos son datos de rsultados electorales en los distritos locales (24) de Sinalo
 ```{r echo=T}
 res_fed <- read_excel("/Users/dhjs/Documents/projects/sinaloa/data/resultados_dip_fed_MR_INE_SINALOA.xlsx") %>% 
   janitor::clean_names() %>% 
-  select(1, 67:68 )
+  select(1:2, 67:68 )
 
 challenge <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_aHplhF1Mm8OcnrVg3y9PI0O-TihXb3Ca4pEhZ825a7nfSkA-a7l7lv3JGkmz8aXZAyc8fbuHgZPm/pub?gid=0&single=true&output=csv",
                       fileEncoding = "UTF-8") %>% 
@@ -87,7 +88,8 @@ challenge <- read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_aHplhF
 
 res_fed <- left_join(res_fed, challenge) %>% 
   mutate(
-    porcentaje = round(total_de_votos*100/lista_nominal,1)
+    porcentaje = round(total_de_votos*100/lista_nominal,1),
+    porcentaje = paste0(porcentaje, " %")
   ) %>% 
   rename(TOTAL = total_de_votos,
          LISTA = lista_nominal) %>% 
@@ -258,15 +260,19 @@ Como bien, es bien fácil hacer mapas una vez que ya tienes todos los datos.
 ```{r echo=T}
 mapa_federal <- tm_shape(sin_fed) +
   tm_polygons(col = "partido") +
-  tm_borders() +
-  tm_layout(title = "Diputados federales de Mayoría Relativa")
+  tm_layout(main.title = "Diputados federales\nde Mayoría Relativa",
+            main.title.position = "center")
 ```
+
+En una versión anterior de este post, el título no aparecia bien, y las capas de *borders* y *polygons* generaban conflictos.
 
 ```{r echo=T}
 mapa_federal
 ```
 
-Por último, le agregamos color a los mapas. En este caso, también podríamos hacer mapas de cloropetas, ya que tenemos información númerica que podemos agregar en categorías. Pero, quiero probar algo: mapas interactivos!
+Como en este blog quiero experimentar, voy a intentar hacer unos mapas interactivos :D
+
+## Mapas interactivos
 
 Mi idea es que al momento de darle clic en tu distrito aparezca la información censal. Es cosa de ver si todas las variables son necesarias. Con el mismo código para hacer mapas estáticos se pueden hacer mapas interactivos. Solo es necesario utilizar una funcionalidad del paquete **tmap**.
 
@@ -277,21 +283,57 @@ tmap_mode("view")
 Y con eso los mapas se hacen interactivos. En teoría solo serán interactivos después de ese código, pero estoy probando.
 
 ```{r echo=T}
+sin_fed <- sin_fed %>% 
+  select("GP", "completo", "En.funciones", "porcentaje", "lista",
+         "P_18YMAS_F", "P_18YMAS_M", "GRAPROES_F", "GRAPROES_M",
+         "PEA_F", "PEA_M",
+         "partido", "geometry")
+
+names(sin_fed) <- c("Grupo Parlamentario", "Nombre completo", "Diputadx en funciones", 
+                "Participación electoral", "Lista nominal", "Población femenina mayor de edad",
+                "Población masculina mayor de edad", "Grado promedio de escolaridad_F",
+                "Grado promedio de escolaridad_M", "PEA Femenina", "PEA Masculina", "partido",
+                "geometry")
+```
+
+En mi primer intento funcionó, pero las etiquetas de los datos se ven horribles, por lo que voy a modificar los datos en los mapas.
+
+```{r echo=T, preview=T}
+mapa_federal <- tm_shape(sin_fed) +
+  tm_polygons(col = "partido") +
+  tm_layout(main.title = "Diputados federales de Mayoría Relativa")
+
 mapa_federal
 ```
+
+Y ahora el caso de los distritos locales
+
+```{r echo=T}
+sin_local <- sin_local %>% 
+  select(c(
+    "GP", "porcentaje", "lista", "P_18YMAS_F", "P_18YMAS_M", 
+    "GRAPROES_F", "GRAPROES_M","PEA_F", "PEA_M",
+    "partido", "geometry"))
+
+names(sin_local) <- c("Grupo Parlamentario", "Participación electoral", "Lista nominal", 
+                "Población femenina mayor de edad", "Población masculina mayor de edad", 
+                "Grado promedio de escolaridad_F", "Grado promedio de escolaridad_M", 
+                "PEA Femenina", "PEA Masculina", "partido", "geometry")
+```
+
 
 ```{r echo=T}
 mapa_local <- tm_shape(sin_local) +
   tm_polygons(col = "partido") +
-  tm_borders() +
-  tm_layout(title = "Diputados locales de Mayoría Relativa")
+  tm_layout(main.title = "Diputados locales de Mayoría Relativa")
 
 mapa_local
 ```
 
-Por último, vamos a ponerlos juntos para verlos más fácil.
+Por último, vamos a ponerlos juntos para verlos más fácil. Nota: No es más fácil verlos, pero pues aquí está el código.
 
-```{r}
+
+```{r echo=T}
 tmap_arrange(mapa_federal, mapa_local)
 ```
 
