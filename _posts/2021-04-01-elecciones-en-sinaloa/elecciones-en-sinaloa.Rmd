@@ -47,7 +47,7 @@ Como veran, hay dos paquetes nuevos: [**sf**](https://r-spatial.github.io/sf/) y
 
 ```{r echo=T}
 res_local <- read.csv("/Users/dhjs/Documents/projects/sinaloa/data/RESULTADOS-DIPUTADOS_LOCAL-DE-MR.csv") %>% 
-  select(distrito, TOTAL, LISTA, Grupo_Parlamentario) %>% 
+  select(distrito, nombre_loc, TOTAL, LISTA, Grupo_Parlamentario) %>% 
   mutate(
     LISTA = str_remove_all(LISTA, "[:punct:]"),
     TOTAL = str_remove_all(TOTAL, "[:punct:]"),
@@ -68,7 +68,7 @@ res_local <- read.csv("/Users/dhjs/Documents/projects/sinaloa/data/RESULTADOS-DI
   )
 ```
 
-Estos son datos de rsultados electorales en los distritos locales (24) de Sinaloa.
+Estos son datos de resultados electorales en los distritos locales (24) de Sinaloa para diputados de mayoría relativa en 2018. Disponibles [aquí](https://www.ieesinaloa.mx/wp-content/uploads/Transparencia/SecretariaEjecutiva/Resultados2018/RESULTADOS-DIPUTADOS-DE-MR_POR_CANDIDATOS_2018.pdf.
 
 ```{r echo=T}
 res_fed <- read_excel("/Users/dhjs/Documents/projects/sinaloa/data/resultados_dip_fed_MR_INE_SINALOA.xlsx") %>% 
@@ -102,9 +102,14 @@ res_fed <- left_join(res_fed, challenge) %>%
       GP == "Sin_Partido" ~ "#1687bc"
     )
   )
+
+mun_gob <- read_excel("/Users/dhjs/Documents/projects/sinaloa/data/Presidentes municipales de Sinaloa.xlsx") %>% 
+  mutate(
+    municipio = str_replace_all(municipio, "á", "a")
+  )
 ```
 
-Y estos de los siete distritos federales, a los que les agregué el nombre de la diputada o diputado, por MR, que busca la reelección en ese distrito.
+Y estos de los siete distritos federales, a los que les agregué el nombre de la diputada o diputado, por MR, que busca la reelección en ese distrito. Los resultados son de las elecciones 2018 del INE, y están [aquí](https://siceen.ine.mx:3000/#/tablas-resultados).
 
 ```{r echo=T}
 censo <- read.csv("/Users/dhjs/Documents/projects/sinaloa/data/ageb_mza_urbana_25_cpv2020/conjunto_de_datos/conjunto_de_datos_ageb_urbana_25_cpv2020.csv") %>% 
@@ -140,6 +145,10 @@ censo <- censo %>%
     HOGJEF_M = as.numeric(HOGJEF_M)
   )
 ```
+
+Además, en ambos casos, adjunté el nombre de los ganadores en cada distrito de mayoría relativa: 
+- [Federales.](https://docs.google.com/spreadsheets/d/e/2PACX-1vT_aHplhF1Mm8OcnrVg3y9PI0O-TihXb3Ca4pEhZ825a7nfSkA-a7l7lv3JGkmz8aXZAyc8fbuHgZPm/pub?gid=0&single=true&output=csv)
+- [Locales.](https://www.congresosinaloa.gob.mx/diputados-sinaloa/)
 
 Y por último, pero no por eso menos importante, cargué los datos del censo 2020 y me quedé con algunas variables.
 
@@ -220,6 +229,32 @@ df <- sin_map %>%
   )
 ```
 
+```{r echo=T}
+dm <- sin_map %>% 
+  group_by(municipio, distrito_l, distrito) %>% 
+  summarise(
+    POBTOT = sum(POBTOT, na.rm = T),
+    POBFEM = sum(POBFEM, na.rm = T),
+    POBMAS = sum(POBMAS, na.rm = T),
+    P_18YMAS = sum(P_18YMAS, na.rm = T),
+    P_18YMAS_F = sum(P_18YMAS_F, na.rm = T),
+    P_18YMAS_M = sum(P_18YMAS_M, na.rm = T),
+    GRAPROES = mean(GRAPROES, na.rm = T),
+    GRAPROES_F = mean(GRAPROES_F, na.rm = T),
+    GRAPROES_M = mean(GRAPROES_M, na.rm = T),
+    PEA = sum(PEA, na.rm = T),
+    PEA_F = sum(PEA_F, na.rm = T),
+    PEA_M = sum(PEA_M, na.rm = T),
+    PSINDER = sum(PSINDER, na.rm = T),
+    PCATOLICA = sum(PCATOLICA, na.rm = T),
+    PRO_CRIEVA = sum(PRO_CRIEVA, na.rm = T),
+    HOGJEF_F = sum(HOGJEF_F, na.rm = T),
+    HOGJEF_M = sum(HOGJEF_M, na.rm = T),
+    padron = sum(padron, na.rm = T),
+    lista = sum(lista, na.rm = T)
+  )
+```
+
 Y este es todo el procedimiento previo y necesario para realizar unos mapas.
 
 ## Por fin! Mapas!!
@@ -235,13 +270,31 @@ sin_local <- st_read("/Users/dhjs/Documents/projects/sinaloa/shp/local/DISTRITO_
   filter(entidad == 25) %>% 
   left_join(dl) %>% 
   left_join(res_local)
+
+res_fed <- res_fed %>% 
+  select(distrito, completo, GP) %>% 
+  rename(nombre_d_f = completo, partido_fed = GP)
+
+res_local <- res_local %>% 
+  select(distrito_l, nombre_loc, GP) %>% 
+  rename(nombre_d_l = nombre_loc, partido_loc = GP)
+
+municipios <- st_read("/Users/dhjs/Documents/projects/sinaloa/shp/25/MUNICIPIO.shp") %>% 
+  left_join(dm) %>% 
+  select(-c(1:4, 6:7)) %>% 
+  mutate(nombre = stringr::str_to_title(nombre)) %>% 
+  rename(municipio = nombre) %>% 
+  left_join(mun_gob) %>% 
+  left_join(res_local) %>% 
+  left_join(res_fed)
 ```
 
-Estos son los archivos finales ya con los datos agregados. Ahora, empecemos a jugar con los mapas.
+Estos son los archivos finales ya con los datos agregados, y cargar los archivos de mapas municipales para probar algo. Ahora, empecemos a jugar con los mapas.
 
 ```{r echo=T}
 tm_shape(sin_fed) +
   tm_fill()
+  
 ```
 La estructura es la misma que una gráfica en ggplot:
 - Una capa donde están los datos.
@@ -300,8 +353,7 @@ En mi primer intento funcionó, pero las etiquetas de los datos se ven horribles
 
 ```{r echo=T, preview=T}
 mapa_federal <- tm_shape(sin_fed) +
-  tm_polygons(col = "partido") +
-  tm_layout(main.title = "Diputados federales de Mayoría Relativa")
+  tm_polygons(col = "partido")
 
 mapa_federal
 ```
@@ -324,16 +376,63 @@ names(sin_local) <- c("Grupo Parlamentario", "Participación electoral", "Lista 
 
 ```{r echo=T}
 mapa_local <- tm_shape(sin_local) +
-  tm_polygons(col = "partido") +
-  tm_layout(main.title = "Diputados locales de Mayoría Relativa")
+  tm_polygons(col = "partido")
 
 mapa_local
 ```
 
-Por último, vamos a ponerlos juntos para verlos más fácil. Nota: No es más fácil verlos, pero pues aquí está el código.
-
-
 ```{r echo=T}
-tmap_arrange(mapa_federal, mapa_local)
+municipios <- municipios %>% 
+  select(municipio,
+         nombre_presidente,
+         partido_municipio,
+         distrito_l,
+        nombre_d_l,
+        
+        partido_loc,
+         distrito,
+        nombre_d_f,
+        partido_fed,
+         lista,
+        
+         padron,
+         POBTOT,
+         P_18YMAS_F,
+         P_18YMAS_M,
+        
+         GRAPROES_F,
+         GRAPROES_M,
+         PEA_F,
+         PEA_M,
+         HOGJEF_F,
+        
+         HOGJEF_M,
+         geometry
+         )
+
+names(municipios) <- c(
+  "Municipio",
+  "Nombre alcalde",
+  "Partido en el municipio",
+  "Distrito local",
+  "Nombre diputadx local",
+  
+  "Partido diptación local",
+  "Distrito federal",
+  "Nombre diputadx federal",
+  "Partido diputación federal",
+  "Lista nominal", 
+  
+  "Padrón electoral", 
+  "Población total",
+  "Población femenina mayor de edad", "Población masculina mayor de edad", 
+  
+  "Grado promedio de escolaridad_F", 
+  "Grado promedio de escolaridad_M", 
+  "PEA Femenina", "PEA Masculina",
+  "Hogares con JEFA de familia", "Hogares con JEFE de familia","geometry")
+
+tm_shape(municipios) +
+  tm_polygons()
 ```
 
